@@ -1,0 +1,45 @@
+[user]
+  email = mahesh@omkara.dev
+  name = Mahesh Sundaram
+
+[credential]
+  helper = cache --timeout=3600
+
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+
+[core]
+  editor = vim
+
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+
+[github]
+  user = maheshsundaram
+
+[push]
+  default = simple
+
+[alias]
+  cm = commit
+  co = checkout
+  df = diff
+  dfc = diff --cached
+  ps = push
+  pf = push --force
+  pl = pull
+  rb = rebase
+  st = status
+  ap = add --patch
+  cp = checkout --patch
+  ma = checkout master
+  cb = checkout -b
+  db = branch -D
+  rbc = rebase --continue
+  rbd = rebase -i master
+  rba = rebase --abort
+[merge "npm-merge-driver"]
+	name = automatically merge npm lockfiles
+	driver = npx npm-merge-driver merge %A %O %B %P

@@ -1,0 +1,41 @@
+# aliases
+alias x='xmodmap ~/.Xmodmap && echo "Xmodmap set"'
+alias dot='cd ~/src/github.com/maheshsundaram/dotfiles'
+
+# grep
+alias grep='grep --color=auto'
+alias s='grep --exclude-dir=node_modules --exclude-dir=.git --exclude=*.log -rn'
+
+# ls
+if [ "$(uname)" = "Linux" ]; then
+  alias ls='ls --color=auto'
+  alias fd='fdfind'
+elif [ "$(uname)" = "Darwin" ]; then
+  alias ls='ls -G'
+  alias fdfind='fd'
+fi
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# g => git
+alias g='git'
+
+# cd
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# npm
+alias n='npm run'
+
+# workflows
+alias pb='git push origin $(git rev-parse --abbrev-ref HEAD)'
+alias pbf='pb --force'
+
+alias vpkg='vim $(pkg)'
+
+alias bump='g cm -a -m "༄𝔅𝔲𝔪𝔭"'
+alias gc='grunt jsbeautify:clean'
+alias cc='git ap && git commit -m "grunt jsbeautify:clean"'
+alias cons='npm run console -- --port=1338'

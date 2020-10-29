@@ -1,0 +1,48 @@
+{
+  "title": "Map 1, 2",
+  "rules": [
+    {
+      "description": "LOL",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "2",
+            "modifiers": {
+              "mandatory": [
+                "command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "v",
+              "modifiers": [
+                "command"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "1",
+            "modifiers": {
+              "mandatory": [
+                "command"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "c",
+              "modifiers": [
+                "command"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

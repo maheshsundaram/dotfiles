@@ -1,0 +1,15 @@
+! This config is for Qisan Magicforce 68
+!
+! Clear Caps_Lock
+clear Lock
+
+! Map Caps_Lock to Control_R
+keycode 108 = Caps_Lock NoSymbol Caps_Lock
+
+! Map Escape to Caps_Lock
+keycode  66 = Escape NoSymbol Escape
+
+! Map Grave to Escape
+! This doesn't always work... :/
+keycode   9 = grave asciitilde grave asciitilde
+keycode  49 = grave asciitilde grave asciitilde

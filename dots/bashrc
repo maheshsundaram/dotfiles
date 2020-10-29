@@ -1,0 +1,76 @@
+[ -s "$HOME/.secrets.sh" ] && \. "$HOME/.secrets.sh"
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
+
+export PATH=$PATH:"$HOME/src/github.com/neovim/neovim/build/bin"
+
+if [ "$(uname)" = "Linux" ]; then
+  source /usr/share/bash-completion/bash_completion
+  export PATH=$PATH:"$HOME/.cargo/bin"
+  source /usr/share/bash-completion/completions/git
+
+elif [ "$(uname)" = "Darwin" ]; then
+  # brew install bash-completion
+  . /usr/local/etc/bash_completion
+
+  export CLICOLOR=true
+  export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+  export PATH=$PATH:"$HOME/Library/Python/3.7/bin"
+
+  complete -o default -o nospace -F _git g
+
+  # i'm conventional
+  export BASH_SILENCE_DEPRECATION_WARNING=1
+fi
+
+# don't put duplicate lines or lines starting with space in the history
+HISTCONTROL=ignoreboth
+
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# check the window size after each command
+shopt -s checkwinsize
+
+# shopt -s globstar
+
+PROMPT_SYMBOL="λ"
+PS1='\D{%F %T} \[\e[32m\]\u\[\e[00m\]:\[\e[1;35m\]\w
+\[\e[0;32m\]$(__git_ps1 "%s") \[\e[0;34m\]$PROMPT_SYMBOL \[\e[00m\]'
+
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+
+set -o vi
+export VISUAL=vi
+export EDITOR=vi
+
+# clone nvm-sh/nvm
+export NVM_DIR="$HOME/src/github.com/nvm-sh/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+source ~/.git-prompt.sh
+source ~/.git-completion.sh
+source ~/.z.sh
+source ~/.git-recent-branches.sh
+source ~/.find-package-json.sh
+source ~/.find-project-root.sh
+source ~/.clone.sh
+source ~/.zz.sh
+source ~/.pass.sh
+source ~/.git_fzf.sh
+source ~/.node-scripts.sh
+
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+fi
+
+# clone junegunn/fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# deno
+export DENO_INSTALL="$HOME/.deno"
+export PATH=$PATH:"$DENO_INSTALL/bin"

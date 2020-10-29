@@ -1,0 +1,10 @@
+{
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.messageTarget": "float",
+  "signature.target": "float",
+  "suggest.enablePreview": true,
+  "suggest.detailMaxLength": 300,
+  "eslint.filetypes": ["javascript"],
+  "suggest.triggerAfterInsertEnter": true,
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "javascriptreact", "typescript", "typescriptreact", "css"]
+}
