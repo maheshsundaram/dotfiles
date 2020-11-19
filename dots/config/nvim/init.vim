@@ -103,6 +103,7 @@ set undodir=~/.config/nvim/undo//
 set expandtab shiftwidth=2 softtabstop=2
 set splitright
 set splitbelow
+set scrolloff=999
 " }} set
 
 " mappings {{
