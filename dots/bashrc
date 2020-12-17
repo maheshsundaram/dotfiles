@@ -55,7 +55,6 @@ export NVM_DIR="$HOME/src/github.com/nvm-sh/nvm"
 source ~/.git-prompt.sh
 source ~/.git-completion.sh
 source ~/.z.sh
-source ~/.git-recent-branches.sh
 source ~/.find-package-json.sh
 source ~/.find-project-root.sh
 source ~/.clone.sh
@@ -79,15 +78,16 @@ export PATH=$PATH:"$DENO_INSTALL/bin"
 # rust
 source "$HOME/.cargo/env"
 
-export PATH=$PATH:"$HOME/.local/bin"
-
-export TODO_DIR="$HOME/notes/__todo__"
-export TODO_FILE="$TODO_DIR/todo.txt"
-export DONE_FILE="$TODO_DIR/todo.done.txt"
-
 # golang
 export PATH=$PATH:"/usr/local/go/bin"
 export PATH=$PATH:"$HOME/go/bin"
 # export GO111MODULE=on
 
 export TERM="xterm-256color"
+
+# yarn
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# local bin
+export PATH="$HOME/.bin:$PATH"
+export PATH=$PATH:"$HOME/.local/bin"
