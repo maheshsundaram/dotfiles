@@ -58,6 +58,19 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " }} coc.vim
 
+" goyo {{
+function! s:goyo_enter()
+  set linebreak
+endfunction
+
+function! s:goyo_leave()
+  set nolinebreak
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+" }} goyo
+
 " matchup {{
 let g:loaded_matchit = 1
 " }} matchup
@@ -89,7 +102,7 @@ filetype plugin indent on
 
 " jsonc {{
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
-" " }}
+" }}
 
 " set {{
 set number
