@@ -9,7 +9,7 @@ gli() {
     fzf \
       --ansi --no-sort --reverse --tiebreak=index \
       --preview "f() { set -- \$(echo -- \$@ | grep -o '[a-f0-9]\{7\}'); [ \$# -eq 0 ] || git show --color=always \$1 $filter; }; f {}" \
-      --bind "j:down,k:up,alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,q:abort,ctrl-m:execute:
+      --bind "ctrl-j:down,ctrl-k:up,ctrl-h:preview-down,ctrl-l:preview-up,ctrl-q:abort,ctrl-m:execute:
                 (grep -o '[a-f0-9]\{7\}' | head -1 |
                 xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
                 {}
@@ -18,6 +18,6 @@ gli() {
       --height 100%
 }
 
-branch() {
+b() {
   git branch --sort=-committerdate | fzf | xargs git checkout
 }

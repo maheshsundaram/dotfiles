@@ -1,23 +1,21 @@
 # dotfiles
 
 - git clone fzf, nvm
+  - link to $HOME
 - mkdir .vim, .vim/backup, .vim/swap, .vim/undo
-- compile neovim
 - npm install -g fd-find
 
 ### macbook
 
 - karabiner elements
-
-install homebrew
-
-then...
-
-brew install
-  - bash-completion
-  - tmux
-  - pgcli
-  - gpg
-  - wget
+- homebrew
+  - brew install
+    - neovim
+    - bash-completion
+    - tmux
+    - pgcli
+    - gpg
 
 ### ubuntu
+
+- apt install neovim

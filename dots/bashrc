@@ -55,7 +55,6 @@ export NVM_DIR="$HOME/src/github.com/nvm-sh/nvm"
 source ~/.git-prompt.sh
 source ~/.git-completion.sh
 source ~/.z.sh
-source ~/.git-recent-branches.sh
 source ~/.find-package-json.sh
 source ~/.find-project-root.sh
 source ~/.clone.sh
@@ -74,3 +73,9 @@ fi
 # deno
 export DENO_INSTALL="$HOME/.deno"
 export PATH=$PATH:"$DENO_INSTALL/bin"
+
+# yarn
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# local bin
+export PATH="$HOME/.bin:$PATH"
