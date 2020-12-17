@@ -1,5 +1,5 @@
 [user]
-  email = mahesh@omkara.dev
+  email = msundaram@tigerconnect.com
   name = Mahesh Sundaram
 
 [credential]
@@ -17,7 +17,7 @@
   insteadOf = https://github.com/
 
 [github]
-  user = maheshsundaram
+  user = tc-msundaram
 
 [push]
   default = simple
@@ -40,6 +40,7 @@
   rbc = rebase --continue
   rbd = rebase -i master
   rba = rebase --abort
+
 [merge "npm-merge-driver"]
 	name = automatically merge npm lockfiles
 	driver = npx npm-merge-driver merge %A %O %B %P
