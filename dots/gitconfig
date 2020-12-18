@@ -13,6 +13,15 @@
 [core]
   editor = vim
 
+[color "diff"]
+  meta = 11
+  frag = magenta
+  commit = yellow
+  whitespace = red reverse
+
+[diff]
+  context = 10
+
 [url "git@github.com:"]
   insteadOf = https://github.com/
 
