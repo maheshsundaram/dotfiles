@@ -41,7 +41,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 " coc.vim {{
 set updatetime=300 " for coc.vim
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-eslint', 'coc-css', 'coc-tabnine', 'coc-prettier']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-eslint', 'coc-css', 'coc-tabnine', 'coc-prettier', 'coc-rls']
 " Use K to show documentation in preview window
 nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <C-e> :CocList diagnostics<CR>
