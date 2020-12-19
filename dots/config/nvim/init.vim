@@ -30,6 +30,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 call plug#end()
 " }} Plug
 
+nnoremap <Space> <nop>
+let mapleader = " "
+
 syntax on
 
 " theme {{
@@ -104,6 +107,7 @@ set undodir=~/.config/nvim/undo//
 set expandtab shiftwidth=2 softtabstop=2
 set splitright
 set splitbelow
+set scrolloff=999
 " }} set
 
 " mappings {{
