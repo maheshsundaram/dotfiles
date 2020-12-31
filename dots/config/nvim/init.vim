@@ -135,3 +135,8 @@ nnoremap <silent> <C-u> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsear
 " }} mappings
 
 let g:vim_markdown_strikethrough = 1
+
+" vim-go {{
+let g:go_fmt_command="gopls"
+let g:go_gopls_gofumpt=1
+" }} vim-go
