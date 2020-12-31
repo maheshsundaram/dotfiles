@@ -6,5 +6,16 @@
   "suggest.detailMaxLength": 300,
   "eslint.filetypes": ["javascript"],
   "suggest.triggerAfterInsertEnter": true,
-  "coc.preferences.formatOnSaveFiletypes": ["javascript", "javascriptreact", "typescript", "typescriptreact", "css"]
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "javascriptreact", "typescript", "typescriptreact", "css", "go"],
+  "go.goplsOptions": {
+    "gofumpt": true
+  },
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
+    }
+  }
 }

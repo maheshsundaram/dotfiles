@@ -23,7 +23,6 @@ Plug 'andymass/vim-matchup' " extend match %
 Plug 'junegunn/Goyo.vim' " focused writing
 Plug 'neoclide/jsonc.vim' " syntax highlighting for jsonc
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 " }} Plug
@@ -41,9 +40,9 @@ set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " }} theme
 
-" coc.vim {{
+" coc {{
 set updatetime=300
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-eslint', 'coc-css', 'coc-tabnine', 'coc-prettier', 'coc-rls']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-eslint', 'coc-css', 'coc-tabnine', 'coc-prettier', 'coc-rls', 'coc-rust-analyzer', 'coc-go']
 
 nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <C-e> :CocList diagnostics<CR>
@@ -135,8 +134,3 @@ nnoremap <silent> <C-u> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsear
 " }} mappings
 
 let g:vim_markdown_strikethrough = 1
-
-" vim-go {{
-let g:go_fmt_command="gopls"
-let g:go_gopls_gofumpt=1
-" }} vim-go
