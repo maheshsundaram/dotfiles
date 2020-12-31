@@ -63,6 +63,7 @@ source ~/.zz.sh
 source ~/.pass.sh
 source ~/.git_fzf.sh
 source ~/.node-scripts.sh
+source ~/.todo.sh
 
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
@@ -77,3 +78,14 @@ export PATH=$PATH:"$DENO_INSTALL/bin"
 
 # rust
 source "$HOME/.cargo/env"
+
+export PATH=$PATH:"$HOME/.local/bin"
+
+export TODO_DIR="$HOME/notes/__todo__"
+export TODO_FILE="$TODO_DIR/todo.txt"
+export DONE_FILE="$TODO_DIR/todo.done.txt"
+
+# golang
+export PATH=$PATH:"/usr/local/go/bin"
+export PATH=$PATH:"$HOME/go/bin"
+# export GO111MODULE=on

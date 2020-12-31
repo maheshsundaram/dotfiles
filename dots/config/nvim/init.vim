@@ -26,6 +26,7 @@ Plug 'andymass/vim-matchup' " extend match %
 Plug 'junegunn/Goyo.vim' " focused writing
 Plug 'neoclide/jsonc.vim' " syntax highlighting for jsonc
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 " }} Plug
@@ -62,6 +63,21 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " }} coc.vim
 
+" Goyo {{
+
+" goyo {{
+function! s:goyo_enter()
+  set linebreak
+endfunction
+
+function! s:goyo_leave()
+  set nolinebreak
+endfunction
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+" }} Goyo
+
 " matchup {{
 let g:loaded_matchit = 1
 " }} matchup
@@ -74,7 +90,8 @@ let g:airline_theme='bubblegum'
 
 " mac clipboard {{
 if has("clipboard")
-  set clipboard=unnamed
+  " set clipboard=unnamed
+  set clipboard=unnamedplus
 endif
 " }} mac clipboard
 
@@ -88,7 +105,8 @@ nnoremap <C-f> :Files<CR>
 nnoremap <C-g> :Files ~/src/github.com/<CR>
 " }} fzf
 
-filetype plugin on
+" filetype plugin on
+syntax enable
 filetype plugin indent on
 
 " jsonc {{
