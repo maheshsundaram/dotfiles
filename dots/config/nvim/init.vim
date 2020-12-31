@@ -8,11 +8,8 @@ endif
 call plug#begin()
 
 Plug 'pangloss/vim-javascript' " js
-" Plug 'marijnh/tern_for_vim', { 'do': 'npm install' } " js
 Plug 'leafgarland/typescript-vim' " ts
 Plug 'peitalin/vim-jsx-typescript' " highlighting
-" Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'Raimondi/delimitMate' " auto-completion for quotes, parens, brackets, etc.
 Plug 'bling/vim-airline' " fly hi...
@@ -45,27 +42,23 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 " }} theme
 
 " coc.vim {{
-set updatetime=300 " for coc.vim
+set updatetime=300
 let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-eslint', 'coc-css', 'coc-tabnine', 'coc-prettier', 'coc-rls']
-" Use K to show documentation in preview window
+
 nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <C-e> :CocList diagnostics<CR>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> <C-o> :CocList outline<CR>
 
-" Use <Tab> and <S-Tab> to navigate the completion list
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-" Use <cr> to confirm completion
+
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
-" use :Prettier to format file
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " }} coc.vim
 
 " Goyo {{
-
-" goyo {{
 function! s:goyo_enter()
   set linebreak
 endfunction
@@ -88,12 +81,11 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='bubblegum'
 " }} airline 
 
-" mac clipboard {{
+" clipboard {{
 if has("clipboard")
-  " set clipboard=unnamed
   set clipboard=unnamedplus
 endif
-" }} mac clipboard
+" }} clipboard
 
 " UltiSnips {{
 let g:UltiSnipsExpandTrigger="<c-x>"
@@ -105,17 +97,15 @@ nnoremap <C-f> :Files<CR>
 nnoremap <C-g> :Files ~/src/github.com/<CR>
 " }} fzf
 
-" filetype plugin on
 syntax enable
 filetype plugin indent on
 
 " jsonc {{
 autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
-" " }}
+" }}
 
 " set {{
 set number
-" set cursorcolumn
 set cursorline
 set cmdheight=1
 set backspace=2
@@ -136,10 +126,10 @@ nnoremap <C-l> <C-W><C-L>
 nnoremap <C-h> <C-W><C-H>
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>
+
 autocmd filetype netrw nnoremap <buffer> % m
 nmap m %
 
-" hlsearch
 let hlstate=0
 nnoremap <silent> <C-u> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>
 " }} mappings
