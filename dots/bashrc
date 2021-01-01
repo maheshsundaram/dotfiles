@@ -63,7 +63,7 @@ source ~/.zz.sh
 source ~/.pass.sh
 source ~/.git_fzf.sh
 source ~/.node-scripts.sh
-source ~/.todo.sh
+source ~/.tofu.sh
 
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
