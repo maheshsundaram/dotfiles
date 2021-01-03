@@ -9,6 +9,7 @@ tofu() {
         sort -o $TODO $TODO
         grep "^x " $TODO >> $DONE
         sed -i '/^x /d' $TODO
+        sed -i 's///g' $TODO
         ;;
       -d|--due)
         shift
