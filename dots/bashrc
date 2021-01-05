@@ -89,3 +89,5 @@ export DONE_FILE="$TODO_DIR/todo.done.txt"
 export PATH=$PATH:"/usr/local/go/bin"
 export PATH=$PATH:"$HOME/go/bin"
 # export GO111MODULE=on
+
+export TERM="xterm-256color"
