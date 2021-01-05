@@ -23,6 +23,7 @@ Plug 'andymass/vim-matchup' " extend match %
 Plug 'junegunn/Goyo.vim' " focused writing
 Plug 'neoclide/jsonc.vim' " syntax highlighting for jsonc
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 
 call plug#end()
 " }} Plug
@@ -33,11 +34,18 @@ let mapleader = " "
 syntax on
 
 " theme {{
-set background=dark
-color spacemacs
 set t_Co=256 " still need this?
 set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set background=dark
+
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+colorscheme spaceduck
 " }} theme
 
 " coc {{
@@ -77,7 +85,7 @@ let g:loaded_matchit = 1
 " airline {{
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='bubblegum'
+let g:airline_theme='spaceduck'
 " }} airline 
 
 " clipboard {{
@@ -105,7 +113,7 @@ autocmd BufRead,BufNewFile tsconfig.json set filetype=jsonc
 
 " set {{
 set number
-set cursorline
+" set cursorline
 set cmdheight=1
 set backspace=2
 set backupdir=~/.config/nvim/backup//
@@ -115,6 +123,7 @@ set expandtab shiftwidth=2 softtabstop=2
 set splitright
 set splitbelow
 set scrolloff=999
+set ignorecase
 " }} set
 
 " mappings {{
