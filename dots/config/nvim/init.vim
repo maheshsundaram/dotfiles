@@ -16,14 +16,12 @@ Plug 'bling/vim-airline' " fly hi...
 Plug 'vim-airline/vim-airline-themes' " ...with airline
 Plug 'tpope/vim-vinegar' " directory navigation
 Plug 'elzr/vim-json' " make json pretty
-" Plug 'SirVer/ultisnips' " snippets
 Plug '~/src/github.com/junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'andymass/vim-matchup' " extend match %
 Plug 'junegunn/Goyo.vim' " focused writing
 Plug 'neoclide/jsonc.vim' " syntax highlighting for jsonc
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
 
 call plug#end()
 " }} Plug
