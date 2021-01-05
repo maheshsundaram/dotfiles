@@ -9,15 +9,15 @@ tofu() {
         sort -o $TODO $TODO
         grep "^x " $TODO >> $DONE
         sed -i '/^x /d' $TODO
-        sed -i 's///g' $TODO
         ;;
       -d|--due)
         shift
         # due today
         echo "# Done today"
-        grep "x $(date +%F)" $DONE # | \
-          # sed -E 's,^x (([0-9]{4})-([0-9]{2})-([0-9]{2}){1,}) ,,g' | \
-          # awk '{print " - [x]" $0}'
+        grep "x $(date +%F)" $DONE | \
+          sed -E 's,^x ([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{4})-([0-9]{2})-([0-9]{2}),,g' | \
+          awk -F 'due:' '{print $1}' | \
+          awk '{print "- [x]" $0}'
         echo ""
 
         echo "# Due today"
