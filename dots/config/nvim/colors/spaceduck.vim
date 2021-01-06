@@ -36,9 +36,9 @@ hi CursorLine guifg=NONE ctermfg=NONE guibg=#16172d ctermbg=234 gui=NONE cterm=N
 hi CursorLineNr guifg=#c1c3cc ctermfg=251 guibg=#16172d ctermbg=234 gui=NONE cterm=NONE
 hi Directory guifg=#00a3cc ctermfg=38 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi DiffAdd guifg=#5ccc96 ctermfg=78 guibg=#1b1c36 ctermbg=234 gui=NONE cterm=NONE
-hi DiffChange guifg=#e39400 ctermfg=172 guibg=#1b1c36 ctermbg=234 gui=NONE cterm=NONE
+hi DiffChange guifg=#ecf0c1 ctermfg=172 guibg=#1b1c36 ctermbg=234 gui=NONE cterm=NONE
 hi DiffDelete guifg=#e33400 ctermfg=166 guibg=#1b1c36 ctermbg=234 gui=NONE cterm=NONE
-hi DiffText guifg=#f2ce00 ctermfg=220 guibg=#1b1c36 ctermbg=234 gui=NONE cterm=NONE
+hi DiffText guifg=#ecf0c1 ctermfg=220 guibg=#1b1c36 ctermbg=234 gui=NONE cterm=NONE
 hi EndOfBuffer guifg=#30365F ctermfg=237 guibg=#0f111b ctermbg=233 gui=NONE cterm=NONE
 hi link TermCursor Cursor
 hi ErrorMsg guifg=#e33400 ctermfg=166 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
@@ -53,17 +53,17 @@ hi ModeMsg guifg=#b3a1e6 ctermfg=146 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi MoreMsg guifg=#b3a1e6 ctermfg=146 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi link NonText EndOfBuffer
 hi PMenu guifg=#ecf0c1 ctermfg=255 guibg=#30365F ctermbg=237 gui=NONE cterm=NONE
-hi PMenuSel guifg=#f2ce00 ctermfg=220 guibg=#1b1c36 ctermbg=234 gui=NONE cterm=NONE
+hi PMenuSel guifg=#f4ce00 ctermfg=220 guibg=#1b1c36 ctermbg=234 gui=NONE cterm=NONE
 hi PmenuSbar guifg=#ecf0c1 ctermfg=255 guibg=#686f9a ctermbg=60 gui=NONE cterm=NONE
 hi PmenuThumb guifg=#ecf0c1 ctermfg=255 guibg=#686f9a ctermbg=60 gui=NONE cterm=NONE
 hi Question guifg=#b3a1e6 ctermfg=146 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi QuickFixLine guifg=#ecf0c1 ctermfg=255 guibg=#16172d ctermbg=234 gui=NONE cterm=NONE
 hi Search guifg=#ffffff ctermfg=15 guibg=#114fd6 ctermbg=26 gui=NONE cterm=NONE
-hi SpecialKey guifg=#e39400 ctermfg=172 guibg=#0f111b ctermbg=233 gui=NONE cterm=NONE
+hi SpecialKey guifg=#ecf0c1 ctermfg=172 guibg=#0f111b ctermbg=233 gui=NONE cterm=NONE
 hi SpellBad guifg=#e33400 ctermfg=166 guibg=NONE ctermbg=NONE gui=underline cterm=underline
 hi SpellLocal guifg=#ecf0c1 ctermfg=255 guibg=NONE ctermbg=NONE gui=underline cterm=underline
 hi SpellCap guifg=#5ccc96 ctermfg=78 guibg=NONE ctermbg=NONE gui=underline cterm=underline
-hi SpellRare guifg=#f2ce00 ctermfg=220 guibg=NONE ctermbg=NONE gui=underline cterm=underline
+hi SpellRare guifg=#ecf0c1 ctermfg=220 guibg=NONE ctermbg=NONE gui=underline cterm=underline
 hi StatusLine guifg=#ecf0c1 ctermfg=255 guibg=#0f111b ctermbg=233 gui=reverse cterm=reverse
 hi link StatusLineTerm StatusLine
 hi StatusLineTermNC guifg=#000000 ctermfg=0 guibg=#30365F ctermbg=237 gui=reverse cterm=reverse
@@ -73,13 +73,13 @@ hi TabLineFill guifg=#818596 ctermfg=102 guibg=#000000 ctermbg=0 gui=NONE cterm=
 hi TabLineSel guifg=#c1c3cc ctermfg=251 guibg=#0f111b ctermbg=233 gui=NONE cterm=NONE
 hi Visual guifg=NONE ctermfg=NONE guibg=#1b1c36 ctermbg=234 gui=NONE cterm=NONE
 hi link VisualNOS Visual
-hi WarningMsg guifg=#e39400 ctermfg=172 guibg=#0f111b ctermbg=233 gui=NONE cterm=NONE
+hi WarningMsg guifg=#ecf0c1 ctermfg=172 guibg=#0f111b ctermbg=233 gui=NONE cterm=NONE
 hi WildMenu guifg=#000000 ctermfg=0 guibg=#c1c3cc ctermbg=251 gui=NONE cterm=NONE
 hi diffAdded guifg=#b3a1e6 ctermfg=146 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi diffRemoved guifg=#e33400 ctermfg=166 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Normal guifg=#ecf0c1 ctermfg=255 guibg=#0f111b ctermbg=233 gui=NONE cterm=NONE
 hi Comment guifg=#30365F ctermfg=237 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi Constant guifg=#f2ce00 ctermfg=220 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi Constant guifg=#ecf0c1 ctermfg=220 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Identifier guifg=#00a3cc ctermfg=38 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Statement guifg=#5ccc96 ctermfg=78 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi PreProc guifg=#b3a1e6 ctermfg=146 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
@@ -99,13 +99,13 @@ hi Typedef guifg=#00a3cc ctermfg=38 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Function guifg=#5ccc96 ctermfg=78 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Include guifg=#5ccc96 ctermfg=78 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Label guifg=#5ccc96 ctermfg=78 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi Exception guifg=#e39400 ctermfg=172 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi Keyword guifg=#e39400 ctermfg=172 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi SpecialChar guifg=#e39400 ctermfg=172 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi Boolean guifg=#f2ce00 ctermfg=220 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi Character guifg=#f2ce00 ctermfg=220 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi Float guifg=#f2ce00 ctermfg=220 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
-hi Number guifg=#f2ce00 ctermfg=220 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi Exception guifg=#ecf0c1 ctermfg=172 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi Keyword guifg=#ecf0c1 ctermfg=172 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi SpecialChar guifg=#ecf0c1 ctermfg=172 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi Boolean guifg=#ecf0c1 ctermfg=220 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi Character guifg=#ecf0c1 ctermfg=220 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi Float guifg=#ecf0c1 ctermfg=220 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
+hi Number guifg=#ecf0c1 ctermfg=220 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Conditional guifg=#5ccc96 ctermfg=78 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Repeat guifg=#5ccc96 ctermfg=78 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
 hi Title guifg=#7a5ccc ctermfg=98 guibg=NONE ctermbg=NONE gui=NONE cterm=NONE
@@ -223,7 +223,7 @@ hi link vistaIcon Identifier
 hi link vistaColon Normal
 hi link vistaScope Constant
 hi link vistaKind Conditional
-hi Sneak guifg=#000000 ctermfg=0 guibg=#f2ce00 ctermbg=220 gui=NONE cterm=NONE
+hi Sneak guifg=#000000 ctermfg=0 guibg=#ecf0c1 ctermbg=220 gui=NONE cterm=NONE
 
 let g:terminal_color_foreground = "#ecf0c1"
 let g:terminal_color_background = "#0f111b"
