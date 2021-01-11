@@ -5,7 +5,6 @@ export PATH=$PATH:"$HOME/src/github.com/neovim/neovim/build/bin"
 
 if [ "$(uname)" = "Linux" ]; then
   source /usr/share/bash-completion/bash_completion
-  export PATH=$PATH:"$HOME/.cargo/bin"
   source /usr/share/bash-completion/completions/git
 
 elif [ "$(uname)" = "Darwin" ]; then
@@ -77,6 +76,7 @@ export PATH=$PATH:"$DENO_INSTALL/bin"
 
 # rust
 source "$HOME/.cargo/env"
+export PATH=$PATH:"$HOME/.cargo/bin"
 
 # golang
 export PATH=$PATH:"/usr/local/go/bin"
