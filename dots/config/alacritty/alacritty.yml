@@ -7,17 +7,17 @@ colors:
 
   normal:
     black:   '#000000'
-    red:     '#e33400'
+    red:     '#ce6f8f'
     green:   '#5ccc96'
-    yellow: '#f2ce00'
+    yellow:  '#f2ce00'
     blue:    '#00a3cc'
     magenta: '#ce6f8f'
-    cyan: '#00a3cc'
-    white: '#ffffff'
+    cyan:    '#00a3cc'
+    white:   '#ffffff'
 
   bright:
     black:   '#686f9a'
-    red:     '#e33400'
+    red:     '#ce6f8f'
     green:   '#5ccc96'
     yellow: '#f2ce00' # same
     blue:    '#00a3cc' # same
