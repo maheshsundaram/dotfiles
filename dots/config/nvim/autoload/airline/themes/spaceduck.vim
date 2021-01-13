@@ -9,7 +9,7 @@
 
 let g:airline#themes#spaceduck#palette = {}
 
-let s:normal1 = [ "#000000", "#30365F", 0, 237 ]
+let s:normal1 = [ "#000000", "#7a5ccc", 0, 98 ]
 let s:normal2 = [ "#30365F", "#686f9a", 237, 60 ]
 let s:normal3 = [ "#30365F", "#686f9a", 237, 60 ]
 let g:airline#themes#spaceduck#palette.normal = airline#themes#generate_color_map(s:normal1, s:normal2, s:normal3)
