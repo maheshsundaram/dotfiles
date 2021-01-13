@@ -43,7 +43,7 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-colorscheme spaceduck
+colorscheme spaceduckling
 " }} theme
 
 " coc {{
