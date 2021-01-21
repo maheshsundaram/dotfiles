@@ -42,7 +42,18 @@ hi javaScriptBoolean      guifg=#b3a1e6 guibg=#0f111b
 hi Include                guifg=#b3a1e6 guibg=#0f111b
 hi Storage                guifg=#b3a1e6 guibg=#0f111b
 hi Statement              guifg=#b3a1e6 guibg=#0f111b
-hi Operator               guifg=#b3a1e6 guibg=#0f111b
+
+hi Operator               guifg=#7a5ccc guibg=#0f111b
+hi typescriptBraces       guifg=#7a5ccc guibg=#0f111b
+hi tsxNotOperator         guifg=#7a5ccc guibg=#0f111b
+hi tsxTag                 guifg=#7a5ccc guibg=#0f111b
+hi tsxCloseTag            guifg=#7a5ccc guibg=#0f111b
+hi typescriptEndColons    guifg=#7a5ccc guibg=#0f111b
+hi typescriptDotNotation  guifg=#7a5ccc guibg=#0f111b
+hi typescriptLogicSymbols guifg=#7a5ccc guibg=#0f111b
+hi tsxAttributeBraces     guifg=#7a5ccc guibg=#0f111b
+hi tsxEqual               guifg=#7a5ccc guibg=#0f111b
+
 hi Pmenu                  guifg=#b3a1e6 guibg=#0f111b
 hi SignColumn                           guibg=#0f111b
 hi Title                  guifg=#b3a1e6
@@ -54,8 +65,8 @@ hi StatusLine             guifg=#b3a1e6 guibg=#0f111b gui=bold
 hi StatusLineNC           guifg=#b3a1e6 guibg=#0f111b gui=NONE
 hi VertSplit              guifg=#b3a1e6 guibg=#0f111b gui=NONE
 
-hi String                 guifg=#5ccc96 guibg=#0f111b
-hi Number                 guifg=#5ccc96 guibg=#0f111b
+hi String                 guifg=#7a5ccc guibg=#0f111b
+hi Number                 guifg=#7a5ccc guibg=#0f111b
 
 hi Comment                guifg=#30365f guibg=#0f111b gui=italic
 hi SpecialComment         guifg=#30365f guibg=#0f111b gui=italic 
@@ -68,4 +79,4 @@ hi Delimiter              guifg=#b3a1e6 guibg=#0f111b
 
 hi IncSearch              guifg=#b3a1e6 guibg=#0f111b
 hi Search                 guifg=#0f111b guibg=#5ccc96
-hi Visual                               guibg=#0f111b gui=NONE 
+hi Visual                 guifg=#0f111b guibg=#5ccc96
