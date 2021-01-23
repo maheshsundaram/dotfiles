@@ -43,22 +43,35 @@ hi Include                guifg=#b3a1e6 guibg=#0f111b
 hi Storage                guifg=#b3a1e6 guibg=#0f111b
 hi Statement              guifg=#b3a1e6 guibg=#0f111b
 
-hi Operator               guifg=#7a5ccc guibg=#0f111b
+hi Operator               guifg=#BC6EC5 guibg=#0f111b
+
+hi tsxAttrib              guifg=#b3a1e6 guibg=#0f111b
+
 hi typescriptBraces       guifg=#7a5ccc guibg=#0f111b
-hi tsxNotOperator         guifg=#7a5ccc guibg=#0f111b
-hi tsxTag                 guifg=#7a5ccc guibg=#0f111b
-hi tsxCloseTag            guifg=#7a5ccc guibg=#0f111b
+hi typescriptParens       guifg=#7a5ccc guibg=#0f111b
 hi typescriptEndColons    guifg=#7a5ccc guibg=#0f111b
-hi typescriptDotNotation  guifg=#7a5ccc guibg=#0f111b
-hi typescriptLogicSymbols guifg=#7a5ccc guibg=#0f111b
 hi tsxAttributeBraces     guifg=#7a5ccc guibg=#0f111b
-hi tsxEqual               guifg=#7a5ccc guibg=#0f111b
+
+hi tsxNotOperator         guifg=#BC6EC5 guibg=#0f111b
+hi tsxTag                 guifg=#BC6EC5 guibg=#0f111b
+hi tsxCloseTag            guifg=#BC6EC5 guibg=#0f111b
+hi typescriptDotNotation  guifg=#BC6EC5 guibg=#0f111b
+hi typescriptLogicSymbols guifg=#BC6EC5 guibg=#0f111b
+hi tsxEqual               guifg=#BC6EC5 guibg=#0f111b
+
+hi typescriptConditional  guifg=#4f97d7 guibg=#0f111b
+hi typescriptStorageClass guifg=#4f97d7 guibg=#0f111b
+hi typescriptReserved     guifg=#4f97d7 guibg=#0f111b
+hi typescriptStatement    guifg=#4f97d7 guibg=#0f111b
+hi typescriptLabel        guifg=#4f97d7 guibg=#0f111b
+hi typescriptType         guifg=#4f97d7 guibg=#0f111b
+hi typescriptNull         guifg=#4f97d7 guibg=#0f111b
 
 hi Pmenu                  guifg=#b3a1e6 guibg=#0f111b
 hi SignColumn                           guibg=#0f111b
 hi Title                  guifg=#b3a1e6
 hi NonText                guifg=#b3a1e6 guibg=#0f111b
-hi CursorLine                           guibg=#0f111b
+hi CursorLine                           guibg=#16172d
 hi TabLineFill                          guibg=#0f111b gui=NONE
 hi TabLine                guifg=#b3a1e6 guibg=#0f111b gui=NONE
 hi StatusLine             guifg=#b3a1e6 guibg=#0f111b gui=bold 
