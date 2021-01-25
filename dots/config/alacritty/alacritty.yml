@@ -2,8 +2,11 @@
 # From github.com/pineapplegiant/spaceduck
 colors:
   primary:
+    # background: '#222532'
+    # foreground: '#bead9d'
     background: '#fceee0'
     foreground: '#4a5067'
+
 
   normal:
     black:   '#000000'
