@@ -10,44 +10,51 @@ let g:colors_name = 'stellarized'
 " Palette
 "
 " Background: light
-" Color:      gry0 #fceee0 ~
-" Color:      gry1 #ecdac9 ~
-" Color:      gry2 #666c85 ~
-" Color:      gry3 #4a5067 ~
-" Color:      gryc #2d3243 ~
-" Color:      srch #ffd506 ~
-" Color:      grys #2d3243 ~
-" Color:      gryp #bead9d ~
-" Color:      sprd #f7003c ~
-" Color:      spbl #0082ff ~
-" Color:      spcy #0093b3 ~
-" Color:      spmg #c709dd ~
-" Color:      red_ #c6394c ~
-" Color:      gold #8b6800 ~
-" Color:      gren #007f25 ~
-" Color:      cyan #007989 ~
-" Color:      blue #006dcc ~
-" Color:      mgnt #a348ae ~
+" grey0  #fceee0
+" grey1  #ecdac9
+" grey2  #666c85
+" grey3  #4a5067
+" grey4  #2d3243
+" grey5  #2d3243
+" grey6  #bead9d
+"
+" yellow #ffd506
+" gold   #8b6800
+"
+" blue0  #0082ff
+" blue1  #006dcc
+"
+" teal0  #0093b3
+" teal1  #007989
+"
+" pink   #c709dd
+"
+" red0   #f7003c
+" red1   #c6394c
+"
+" green  #007f25
+"
+" purple #a348ae
 "
 " Background: dark
-" Color:      gry0 #222532 ~
-" Color:      gry1 #2d3243 ~
-" Color:      gry2 #9d8875 ~
-" Color:      gry3 #bead9d ~
-" Color:      gryc #ecdac9 ~
-" Color:      srch #8d6e19 ~
-" Color:      grys #ecdac9 ~
-" Color:      gryp #4a5067 ~
-" Color:      sprd #ff707e ~
-" Color:      spbl #00b4ff ~
-" Color:      spcy #00c8d9 ~
-" Color:      spmg #ee81f9 ~
-" Color:      red_ #ca7375 ~
-" Color:      gold #a58949 ~
-" Color:      gren #5c9a61 ~
-" Color:      cyan #009ba2 ~
-" Color:      blue #578fcc ~
-" Color:      mgnt #b178b5 ~
+" gry0 #222532
+" gry1 #2d3243
+" gry2 #9d8875
+" gry3 #bead9d
+" gryc #ecdac9
+" srch #8d6e19
+" grys #ecdac9
+" gryp #4a5067
+" sprd #ff707e
+" spbl #00b4ff
+" spcy #00c8d9
+" spmg #ee81f9
+" red_ #ca7375
+" gold #a58949
+" gren #5c9a61
+" cyan #009ba2
+" blue #578fcc
+" mgnt #b178b5
 
 if &background ==# 'dark'
   hi Bold             guifg=NONE    guibg=NONE    guisp=NONE    gui=NONE,bold
