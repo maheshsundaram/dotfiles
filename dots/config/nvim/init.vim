@@ -23,6 +23,7 @@ Plug 'junegunn/Goyo.vim' " focused writing
 Plug 'neoclide/jsonc.vim' " syntax highlighting for jsonc
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'junegunn/vim-easy-align'
 
 call plug#end()
 " }} Plug
@@ -36,15 +37,9 @@ syntax on
 set t_Co=256 " still need this?
 set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=dark
+set background=light
 
-if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-  set termguicolors
-endif
-
-colorscheme spaceduckling
+colorscheme stellarized 
 " }} theme
 
 " coc {{
@@ -84,7 +79,7 @@ let g:loaded_matchit = 1
 " airline {{
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='spaceduck'
+let g:airline_theme='stellarized_light'
 " }} airline 
 
 " clipboard {{
@@ -142,3 +137,5 @@ nnoremap <silent> <C-u> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsear
 " }} mappings
 
 let g:vim_markdown_strikethrough = 1
+
+xmap ga <Plug>(EasyAlign)
