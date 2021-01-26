@@ -1,26 +1,27 @@
-# Modified Space Duck
-# From github.com/pineapplegiant/spaceduck
 colors:
   primary:
-    background: '#0f111b'
-    foreground: '#b3a1e6'
+    # background: '#222532'
+    # foreground: '#bead9d'
+    background: '#fceee0'
+    foreground: '#4a5067'
+
 
   normal:
     black:   '#000000'
-    red:     '#ce6f8f'
-    green:   '#5ccc96'
-    yellow:  '#f2ce00'
-    blue:    '#00a3cc'
-    magenta: '#ce6f8f'
-    cyan:    '#00a3cc'
-    white:   '#ffffff'
+    red:     '#c6394c'
+    green:   '#007f25'
+    yellow:  '#8b6800'
+    blue:    '#006dcc'
+    magenta: '#c6394c'
+    cyan:    '#0082ff'
+    white:   '#f0f1ce'
 
   bright:
-    black:   '#686f9a'
-    red:     '#ce6f8f'
-    green:   '#5ccc96'
-    yellow: '#f2ce00' # same
-    blue:    '#00a3cc' # same
-    magenta: '#ce6f8f' # same
-    cyan: '#00a3cc'
+    black:   '#000000'
+    red:     '#c6394c'
+    green:   '#007f25'
+    yellow:  '#8b6800'
+    blue:    '#006dcc'
+    magenta: '#c6394c'
+    cyan:    '#0082ff'
     white:   '#f0f1ce'

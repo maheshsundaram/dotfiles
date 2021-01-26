@@ -18,6 +18,6 @@ gli() {
       --height 100%
 }
 
-branch() {
+b() {
   git branch --sort=-committerdate | fzf | xargs git checkout
 }
