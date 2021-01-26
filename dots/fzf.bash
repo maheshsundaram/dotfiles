@@ -13,7 +13,7 @@ fi
 source "$HOME/src/github.com/junegunn/fzf/shell/key-bindings.bash"
 
 # Options
-export FZF_DEFAULT_OPTS='--height 90% --border'
+export FZF_DEFAULT_OPTS='--height 90% --border --color=light'
 
 # export FZF_DEFAULT_COMMAND='fd --type f'
 # export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
