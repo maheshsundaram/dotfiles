@@ -22,6 +22,7 @@ Plug 'andymass/vim-matchup' " extend match %
 Plug 'junegunn/Goyo.vim' " focused writing
 Plug 'neoclide/jsonc.vim' " syntax highlighting for jsonc
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'junegunn/vim-easy-align'
 
 call plug#end()
 " }} Plug
@@ -125,6 +126,8 @@ nnoremap <C-l> <C-W><C-L>
 nnoremap <C-h> <C-W><C-H>
 nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>
+
+xmap ga <Plug>(EasyAlign)
 
 autocmd filetype netrw nnoremap <buffer> % m
 nmap m %
