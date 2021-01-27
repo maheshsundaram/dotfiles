@@ -36,8 +36,8 @@ shopt -s checkwinsize
 # shopt -s globstar
 
 PROMPT_SYMBOL="λ"
-PS1='\n\D{%F %T} \w
-$(__git_ps1 "%s")\[\e[01;30m\] $PROMPT_SYMBOL \[\e[00m\]'
+PS1='\n\D{%F %T} \[\e[0;34m\]\w
+$(__git_ps1 "%s") $PROMPT_SYMBOL \[\e[00m\]'
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
