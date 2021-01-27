@@ -149,6 +149,7 @@ if &background ==# 'dark'
   hi Number           guifg=#009ba2 guibg=NONE    guisp=NONE    gui=NONE
   hi String           guifg=#009ba2 guibg=NONE    guisp=NONE    gui=NONE
   hi Visual           guifg=#578fcc guibg=#222532 guisp=NONE    gui=NONE,reverse
+  hi markdownError    guifg=NONE    guibg=NONE    guisp=NONE    gui=NONE,bold
   finish
 endif
 
