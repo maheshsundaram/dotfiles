@@ -1,7 +1,3 @@
-# aliases
-alias x='xmodmap ~/.Xmodmap && echo "Xmodmap set"'
-alias dot='cd ~/src/github.com/maheshsundaram/dotfiles'
-
 # grep
 alias grep='grep --color=auto'
 alias s='grep --exclude-dir=node_modules --exclude-dir=.git --exclude=*.log -rn'

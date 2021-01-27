@@ -63,6 +63,7 @@ source ~/.pass.sh
 source ~/.git_fzf.sh
 source ~/.node-scripts.sh
 source ~/.tofu.sh
+source ~/.set_xmodmap.sh && x
 
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
