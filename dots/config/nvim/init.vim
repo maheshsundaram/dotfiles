@@ -37,7 +37,7 @@ syntax on
 set t_Co=256 " still need this?
 set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=light
+set background=dark
 
 colorscheme stellarized 
 " }} theme
@@ -79,7 +79,7 @@ let g:loaded_matchit = 1
 " airline {{
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='stellarized_light'
+let g:airline_theme='stellarized_dark'
 " }} airline 
 
 " clipboard {{
