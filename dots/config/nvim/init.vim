@@ -137,4 +137,7 @@ let hlstate=0
 nnoremap <silent> <C-u> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>
 " }} mappings
 
+" markdown {{
 let g:vim_markdown_strikethrough = 1
+autocmd filetype markdown set linebreak
+" }} markdown
