@@ -118,6 +118,7 @@ set splitright
 set splitbelow
 set scrolloff=999
 set ignorecase
+set cursorline
 " }} set
 
 " mappings {{
