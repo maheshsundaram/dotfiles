@@ -1,21 +1,27 @@
 # dotfiles
 
-- git clone fzf, nvm
-  - link to $HOME
+## macbook
+
+Setting up a new MacBook
+---
+- install xcode (git etc.)
 - mkdir .vim, .vim/backup, .vim/swap, .vim/undo
-- npm install -g fd-find
-
-### macbook
-
-- karabiner elements
-- homebrew
-  - brew install
-    - neovim
-    - bash-completion
-    - tmux
-    - pgcli
-    - gpg
-
-### ubuntu
-
-- apt install neovim
+- install nix
+  - alacritty
+  - bash
+    - sudo vim /etc/shells -- add /usr/local/bin/bash
+    - chsh -s /usr/local/bin/bash
+    - sudo chsh -s /usr/local/bin/bash
+  - tmux
+  - bash-completion
+  - wget
+  - ripgrep
+  - neovim
+- mkdir src/github.com/maheshsundaram
+- generate new ssh key and add to github
+- git clone
+  - dotfiles
+  - fzf
+  - nvm
+    - npm install -g fd-find
+- install karabiner-elements
