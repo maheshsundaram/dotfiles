@@ -96,6 +96,21 @@ let g:UltiSnipsExpandTrigger="<c-x>"
 nnoremap <C-b> :Buffers<CR>
 nnoremap <C-f> :Files<CR>
 nnoremap <C-g> :Files ~/src/github.com/<CR>
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 " }} fzf
 
 syntax enable
@@ -137,21 +152,31 @@ let hlstate=0
 nnoremap <silent> <C-u> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>
 " }} mappings
 
+" markdown {{
 let g:vim_markdown_strikethrough = 1
+" }} markdown
 
+" EasyAlign {{
 xmap ga <Plug>(EasyAlign)
+" }} EasyAlign
 
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+" https://github.com/davidarmstronglewis/alacritty-theme
+" alacritty-theme {{
+function! AlignBackground()
+  let &background = ( system('alacritty-theme current') =~ "light" ? "light" : "dark" )
+  hi Normal guibg=NONE ctermbg=NONE
+endfunc
+
+function! ToggleAlacrittyTheme()
+  if (system('alacritty-theme current') =~ "light")
+    call system('alacritty-theme change stellarized_dark')
+  else
+    call system('alacritty-theme change stellarized_light')
+  endif
+  call AlignBackground()
+endfunc
+
+nmap <leader>t :call ToggleAlacrittyTheme()<cr>
+
+call AlignBackground()
+" }} alacritty-theme
