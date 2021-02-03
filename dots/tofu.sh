@@ -1,5 +1,5 @@
-TODO="$HOME/notes/__todo__/todo.txt"
-DONE="$HOME/notes/__todo__/done.txt"
+TODO="$HOME/notes/00-todo.txt"
+DONE="$HOME/notes/04-done.txt"
 
 tofu() {
   while test $# -gt 0; do
