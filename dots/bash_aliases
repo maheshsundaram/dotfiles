@@ -28,10 +28,4 @@ alias n='npm run'
 # workflows
 alias pb='git push origin $(git rev-parse --abbrev-ref HEAD)'
 alias pbf='pb --force'
-
 alias vpkg='vim $(pkg)'
-
-alias bump='g cm -a -m "༄𝔅𝔲𝔪𝔭"'
-alias gc='grunt jsbeautify:clean'
-alias cc='git ap && git commit -m "grunt jsbeautify:clean"'
-alias cons='npm run console -- --port=1338'
