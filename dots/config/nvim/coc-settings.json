@@ -1,12 +1,15 @@
 {
+  "coc.preferences.bracketEnterImprove": true,
   "diagnostic.checkCurrentLine": true,
   "diagnostic.messageTarget": "float",
   "signature.target": "float",
   "suggest.enablePreview": true,
   "suggest.detailMaxLength": 300,
-  "eslint.filetypes": ["javascript", "typescript"],
+  "eslint.autoFixOnSave": true,
   "suggest.triggerAfterInsertEnter": true,
-  "coc.preferences.formatOnSaveFiletypes": ["javascript", "javascriptreact", "typescript", "typescriptreact", "css", "scss", "go"],
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "javascriptreact", "typescript", "typescriptreact", "css", "scss", "go", "json"],
+  "coc.preferences.formatOnTypeFiletypes": ["javascript", "javascriptreact", "typescript", "typescriptreact", "css", "scss", "go", "json"],
+  "coc.preferences.formatOnType": false,
   "go.goplsOptions": {
     "gofumpt": true
   },

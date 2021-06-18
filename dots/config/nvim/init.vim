@@ -24,6 +24,7 @@ Plug 'neoclide/jsonc.vim' " syntax highlighting for jsonc
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/vim-easy-align'
+Plug 'ruanyl/vim-gh-line'
 
 call plug#end()
 " }} Plug
@@ -57,6 +58,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " }} coc.vim
 
 " Goyo {{
@@ -137,7 +140,6 @@ set cursorline
 " }} set
 
 " mappings {{
-inoremap <C-c> <CR><Esc>O
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-l> <C-W><C-L>
