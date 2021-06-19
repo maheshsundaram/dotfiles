@@ -22,8 +22,9 @@ Plug 'andymass/vim-matchup' " extend match %
 Plug 'junegunn/Goyo.vim' " focused writing
 Plug 'neoclide/jsonc.vim' " syntax highlighting for jsonc
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/vim-easy-align'
+" Plug 'vimwiki/vimwiki'
 
 call plug#end()
 " }} Plug
@@ -135,6 +136,10 @@ nmap m %
 
 let hlstate=0
 nnoremap <silent> <C-u> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>
+
+nnoremap <C-D> "=strftime("%Y-%m-%d")<CR>P
+inoremap <C-D> <C-R>=strftime("%Y-%m-%d")<CR>
+" %Y-%m-%d
 " }} mappings
 
 " markdown {{

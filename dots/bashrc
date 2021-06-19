@@ -61,7 +61,6 @@ source ~/.clone.sh
 source ~/.zz.sh
 source ~/.pass.sh
 source ~/.git_fzf.sh
-source ~/.node-scripts.sh
 source ~/.tofu.sh
 source ~/.set_xmodmap.sh && x
 
@@ -81,9 +80,9 @@ source "$HOME/.cargo/env"
 
 export PATH=$PATH:"$HOME/.local/bin"
 
-export TODO_DIR="$HOME/notes/__todo__"
-export TODO_FILE="$TODO_DIR/todo.txt"
-export DONE_FILE="$TODO_DIR/todo.done.txt"
+export TODO_DIR="$HOME/notes"
+export TODO_FILE="$TODO_DIR/00-todo.txt"
+export DONE_FILE="$TODO_DIR/04-done.txt"
 
 # golang
 export PATH=$PATH:"/usr/local/go/bin"

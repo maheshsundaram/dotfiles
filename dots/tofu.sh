@@ -49,15 +49,22 @@ tofu() {
       -ctx|--contexts)
         shift
         # sed -i 's/^M//g' $TODO
-        grep -o "[^ ]*@[^ ]\\+" $TODO | sed -n -e "/^@.*$/p" | sed "s///g" | sed "s/\@//g" | sort -u | fzf -m \
-      --preview "f() { set -- \$(echo -- \$@); [ \$# -eq 0 ] || grep \$1 $TODO; }; f {}" \
-      --bind "j:down,k:up,alt-j:preview-down,alt-k:preview-up,ctrl-f:preview-page-down,ctrl-b:preview-page-up,q:abort,ctrl-m:execute:
-                (grep -o '[a-f0-9]\{7\}' | head -1 |
-                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
-                {}
-                FZF-EOF" \
-      --preview-window=right:60% \
-      --height 100%
+        grep -o "[^ ]*@[^ ]\\+" $TODO \
+          | sed -n -e "/^@.*$/p" \
+          | sed "s///g" \
+          | sed "s/\@//g" \
+          | sort -u \
+          | fzf -m --ansi \
+            --preview "grep \@{} $TODO" \
+            --bind "ctrl-j:down,ctrl-k:up,ctrl-q:abort,ctrl-m:execute:(grep \@{} $TODO | fzf --bind \"ctrl-m:execute(sh -c 'echo {} | vim -')\")" \
+            --preview-window=right:80% \
+            --height 100%
+        #
+        # next - ctrl-? to switch between viewing by project/tag/due date/query 
+        # in the nested execute
+        #   preview shows formatted todo
+        #   bind to edit and mark as done
+        #
         # contexts=($(grep -o "[^ ]*@[^ ]\\+" $TODO | sed -n -e "/^@.*$/p" | sed "s///g" | sed "s/\@//g" | sort -u | fzf -m))
         # search=""
         # for i in ${!contexts[@]}

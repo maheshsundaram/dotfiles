@@ -21,3 +21,12 @@ gli() {
 b() {
   git branch --sort=-committerdate | fzf | xargs git checkout
 }
+
+ns() {
+  # | column -s "!" -t | fzf | cut -d " " -f 1
+  jq -r '.scripts | keys[]' < package.json |\
+    fzf \
+    --preview "f() { set -- \$(echo -- \$@); grep -- \$1 package.json }; f {}" \
+      --preview-window=right:60% \
+      --height 100%
+}

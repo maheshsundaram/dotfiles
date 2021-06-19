@@ -6,7 +6,7 @@
   "suggest.detailMaxLength": 300,
   "eslint.filetypes": ["javascript", "typescript"],
   "suggest.triggerAfterInsertEnter": true,
-  "coc.preferences.formatOnSaveFiletypes": ["javascript", "javascriptreact", "typescript", "typescriptreact", "css", "scss", "go"],
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "javascriptreact", "typescript", "typescriptreact", "css", "scss", "go", "html"],
   "go.goplsOptions": {
     "gofumpt": true
   },
@@ -19,5 +19,6 @@
     }
   },
   "tsserver.log": "verbose",
-  "tsserver.trace.server": "verbose"
+  "tsserver.trace.server": "verbose",
+  "tsserver.enable": true
 }
