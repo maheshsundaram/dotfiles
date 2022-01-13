@@ -1,4 +1,4 @@
-set nocompatible              " be iMproved, required
+set nocompatible
 
 syntax on
 filetype plugin on
@@ -6,7 +6,6 @@ filetype plugin indent on
 
 set t_Co=256
 set backspace=2
-set background=dark
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
