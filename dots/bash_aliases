@@ -5,7 +5,6 @@ alias s='grep --exclude-dir=node_modules --exclude-dir=.git --exclude=*.log -rn'
 # ls
 if [ "$(uname)" = "Linux" ]; then
   alias ls='ls --color=auto'
-  alias fd='fdfind'
 elif [ "$(uname)" = "Darwin" ]; then
   alias ls='ls -G'
   alias fdfind='fd'
