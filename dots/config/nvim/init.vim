@@ -16,7 +16,7 @@ Plug 'bling/vim-airline' " fly hi...
 Plug 'vim-airline/vim-airline-themes' " ...with airline
 Plug 'tpope/vim-vinegar' " directory navigation
 Plug 'elzr/vim-json' " make json pretty
-Plug '~/src/github.com/junegunn/fzf'
+Plug '~/code/junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'andymass/vim-matchup' " extend match %
 Plug 'junegunn/Goyo.vim' " focused writing
@@ -44,7 +44,7 @@ colorscheme stellarized
 
 " coc {{
 set updatetime=300
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-eslint', 'coc-css', 'coc-tabnine', 'coc-prettier', 'coc-rls', 'coc-rust-analyzer', 'coc-go']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-eslint', 'coc-css', 'coc-tabnine', 'coc-prettier', 'coc-rls', 'coc-rust-analyzer', 'coc-go']
 
 nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <C-e> :CocList diagnostics<CR>
