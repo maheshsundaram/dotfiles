@@ -137,8 +137,8 @@ nmap m %
 let hlstate=0
 nnoremap <silent> <C-u> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>
 
-nnoremap <C-D> "=strftime("%Y-%m-%d")<CR>P
-inoremap <C-D> <C-R>=strftime("%Y-%m-%d")<CR>
+nnoremap <C-D> "=strftime("%Y-%m-%d %A")<CR>P
+inoremap <C-D> <C-R>=strftime("%Y-%m-%d %A")<CR>
 " %Y-%m-%d
 " }} mappings
 
