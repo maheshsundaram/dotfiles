@@ -44,8 +44,8 @@ export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 
 set -o vi
-export VISUAL=vi
-export EDITOR=vi
+export VISUAL=vim
+export EDITOR=vim
 
 # clone nvm-sh/nvm
 export NVM_DIR="$HOME/code/nvm-sh/nvm"

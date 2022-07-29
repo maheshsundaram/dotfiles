@@ -18,10 +18,10 @@ Plug 'tpope/vim-vinegar' " directory navigation
 Plug 'elzr/vim-json' " make json pretty
 Plug '~/code/junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'andymass/vim-matchup' " extend match %
+" Plug 'andymass/vim-matchup' " extend match %
 Plug 'junegunn/Goyo.vim' " focused writing
 Plug 'neoclide/jsonc.vim' " syntax highlighting for jsonc
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/vim-easy-align'
 " Plug 'vimwiki/vimwiki'
@@ -49,6 +49,7 @@ let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-eslint', 'coc-cs
 nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <C-e> :CocList diagnostics<CR>
 nmap <silent> gd <Plug>(coc-definition)
+nmap <leader>rn <Plug>(coc-rename)
 nmap <silent> <C-o> :CocList outline<CR>
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -73,7 +74,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " }} Goyo
 
 " matchup {{
-let g:loaded_matchit = 1
+" let g:loaded_matchit = 1
 " }} matchup
 
 " airline {{
@@ -87,10 +88,6 @@ if has("clipboard")
   set clipboard=unnamedplus
 endif
 " }} clipboard
-
-" UltiSnips {{
-let g:UltiSnipsExpandTrigger="<c-x>"
-" }} UltiSnips
 
 " fzf {{
 nnoremap <C-b> :Buffers<CR>
@@ -139,10 +136,12 @@ nnoremap <silent> <C-u> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsear
 
 nnoremap <C-D> "=strftime("%Y-%m-%d %A")<CR>P
 inoremap <C-D> <C-R>=strftime("%Y-%m-%d %A")<CR>
-" %Y-%m-%d
 " }} mappings
 
 " markdown {{
 let g:vim_markdown_strikethrough = 1
+" let g:markdown_fenced_languages = ['html', 'ts', 'bash=sh', 'tsx', 'jsx', 'rust']
+let g:markdown_folding = 1
+au FileType markdown setlocal foldlevel=99
 autocmd filetype markdown set linebreak
 " }} markdown

@@ -2,6 +2,9 @@
   email = mahesh@omkara.dev
   name = Mahesh Sundaram
 
+[includeIf "gitdir:~/work/"]
+  path = ~/work/.gitconfig
+
 [credential]
   helper = cache --timeout=3600
 
@@ -11,7 +14,7 @@
   status = auto
 
 [core]
-  editor = vim
+  editor = nvim
 
 [url "git@github.com:"]
   insteadOf = https://github.com/
