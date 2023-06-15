@@ -49,4 +49,4 @@ color_schemes:
       cyan:    '#0082ff'
       white:   '#f0f1ce'
 
-colors: *stellarized_dark
+colors: *stellarized_light

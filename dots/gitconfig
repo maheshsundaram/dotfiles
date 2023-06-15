@@ -49,6 +49,7 @@
   rbc = rebase --continue
   rbd = rebase -i master
   rba = rebase --abort
+  nv = --no-verify
 
 [merge "npm-merge-driver"]
 	name = automatically merge npm lockfiles

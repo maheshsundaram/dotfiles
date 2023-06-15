@@ -49,7 +49,12 @@ let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-tslint-plugin', 
 
 nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <C-e> :CocList diagnostics<CR>
+
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 nmap <silent> <C-o> :CocList outline<CR>
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -152,6 +157,8 @@ nmap m %
 
 let hlstate=0
 nnoremap <silent> <C-u> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>
+
+nmap <leader>rn <Plug>(coc-rename)
 " }} mappings
 
 " markdown {{
