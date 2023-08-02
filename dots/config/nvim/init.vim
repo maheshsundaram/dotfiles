@@ -25,6 +25,7 @@ Plug 'neoclide/jsonc.vim' " syntax highlighting for jsonc
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/vim-easy-align'
 " Plug 'vimwiki/vimwiki'
+Plug 'mzlogin/vim-markdown-toc'
 
 call plug#end()
 " }} Plug
