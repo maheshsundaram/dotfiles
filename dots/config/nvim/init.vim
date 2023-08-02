@@ -136,6 +136,9 @@ nnoremap <silent> <C-u> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsear
 
 nnoremap <C-D> "=strftime("%Y-%m-%d %A")<CR>P
 inoremap <C-D> <C-R>=strftime("%Y-%m-%d %A")<CR>
+
+nnoremap <C-E> "=strftime("%Y-%m-%d")<CR>P
+inoremap <C-E> <C-R>=strftime("%Y-%m-%d")<CR>
 " }} mappings
 
 " markdown {{
