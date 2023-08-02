@@ -45,7 +45,7 @@ colorscheme stellarized
 
 " coc {{
 set updatetime=300
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-eslint', 'coc-css', 'coc-tabnine', 'coc-prettier', 'coc-rls', 'coc-rust-analyzer', 'coc-go']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-eslint', 'coc-css', 'coc-tabnine', 'coc-prettier', 'coc-rust-analyzer', 'coc-go']
 
 nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <C-e> :CocList diagnostics<CR>
