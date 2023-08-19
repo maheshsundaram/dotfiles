@@ -1,16 +1,16 @@
 # Setup fzf
 # ---------
-if [[ ! "$PATH" == *$HOME/src/github.com/junegunn/fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}$HOME/src/github.com/junegunn/fzf/bin"
+if [[ ! "$PATH" == *$HOME/code/junegunn/fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}$HOME/code/junegunn/fzf/bin"
 fi
 
 # Auto-completion
 # ---------------
-[[ $- == *i* ]] && source "$HOME/src/github.com/junegunn/fzf/shell/completion.bash" 2> /dev/null
+[[ $- == *i* ]] && source "$HOME/code/junegunn/fzf/shell/completion.bash" 2> /dev/null
 
 # Key bindings
 # ------------
-source "$HOME/src/github.com/junegunn/fzf/shell/key-bindings.bash"
+source "$HOME/code/junegunn/fzf/shell/key-bindings.bash"
 
 # Options
 export FZF_DEFAULT_OPTS='--height 90% --border --color=light'
