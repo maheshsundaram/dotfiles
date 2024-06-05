@@ -9,11 +9,12 @@ if [ "$(uname)" = "Linux" ]; then
 
 elif [ "$(uname)" = "Darwin" ]; then
   # brew install bash-completion
-  . /usr/local/etc/bash_completion
+  # . /usr/local/etc/bash_completion
+  [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
 
   export CLICOLOR=true
   export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
-  export PATH=$PATH:"$HOME/Library/Python/3.7/bin"
+  # export PATH=$PATH:"$HOME/Library/Python/3.7/bin"
 
   complete -o default -o nospace -F _git g
 
@@ -21,14 +22,14 @@ elif [ "$(uname)" = "Darwin" ]; then
   export BASH_SILENCE_DEPRECATION_WARNING=1
 fi
 
-# don't put duplicate lines or lines starting with space in the history
-HISTCONTROL=ignoreboth
 
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# append to the history file, don't overwrite it
+# https://askubuntu.com/a/339925
+HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # check the window size after each command
 shopt -s checkwinsize
@@ -91,3 +92,23 @@ export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 # local bin
 export PATH="$HOME/.bin:$PATH"
 export PATH=$PATH:"$HOME/.local/bin"
+
+eval "$(fnm env --use-on-cd)"
+. "$HOME/.cargo/env"
+
+# brew
+export PATH="/opt/homebrew/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+
+export PYENV_ROOT="$HOME/src/github.com/pyenv/pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+# source "$HOME/.rye/env"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH

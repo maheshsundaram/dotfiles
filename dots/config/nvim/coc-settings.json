@@ -13,6 +13,7 @@
   "go.goplsOptions": {
     "gofumpt": true
   },
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
   "languageserver": {
     "go": {
       "command": "gopls",
@@ -22,5 +23,6 @@
     }
   },
   "tsserver.log": "verbose",
-  "tsserver.trace.server": "verbose"
+  "tsserver.trace.server": "verbose",
+  "ruff.autoFixOnSave": true
 }

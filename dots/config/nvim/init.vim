@@ -25,6 +25,14 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/vim-easy-align'
 Plug 'ruanyl/vim-gh-line'
+Plug 'mzlogin/vim-markdown-toc'
+" Plug 'codota/tabnine-nvim', { 'do': './dl_binaries.sh' }
+Plug 'github/copilot.vim'
+
+Plug 'sainnhe/everforest'
+Plug 'rose-pine/neovim'
+Plug 'talha-akram/noctis.nvim'
+Plug 'oxfist/night-owl.nvim'
 
 call plug#end()
 " }} Plug
@@ -38,14 +46,15 @@ syntax on
 set t_Co=256 " still need this?
 set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=dark
+set background=light
 
-colorscheme stellarized 
+colorscheme stellarized
 " }} theme
 
 " coc {{
 set updatetime=300
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-eslint', 'coc-css', 'coc-tabnine', 'coc-prettier', 'coc-rls', 'coc-rust-analyzer', 'coc-go']
+" let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-eslint', 'coc-css', 'coc-tabnine', 'coc-prettier', 'coc-rust-analyzer', 'coc-go']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-tslint-plugin', 'coc-eslint', 'coc-css', 'coc-prettier', 'coc-rust-analyzer']
 
 nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <C-e> :CocList diagnostics<CR>
@@ -87,7 +96,7 @@ let g:loaded_matchit = 1
 " airline {{
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='stellarized_dark'
+let g:airline_theme='stellarized_light'
 " }} airline 
 
 " clipboard {{
@@ -187,5 +196,43 @@ endfunc
 
 nmap <leader>t :call ToggleAlacrittyTheme()<cr>
 
-call AlignBackground()
+" call AlignBackground()
 " }} alacritty-theme
+
+" lua <<EOF
+" require('tabnine').setup({
+"   disable_auto_comment=true,
+"   accept_keymap="<Tab>",
+"   dismiss_keymap = "<C-]>",
+"   debounce_ms = 800,
+"   suggestion_color = {gui = "#808080", cterm = 244},
+"   exclude_filetypes = {"TelescopePrompt", "NvimTree"},
+"   log_file_path = nil, -- absolute path to Tabnine log file
+" })
+" EOF
+
+" Highlight Markdown undone tasks
+autocmd FileType markdown syntax match markdownUndoneTask "\- \[ \] .*" containedin=ALL
+highlight CustomUndoneTask guibg=#bead9d
+autocmd FileType markdown highlight link markdownUndoneTask CustomUndoneTask
+
+lua <<EOF
+-- Function to search for today's date in the format YYYY-MM-DD with debugging
+local function search_today()
+    local date_today = os.date("%Y-%m-%d")  -- Gets the current date
+    print("Debug: Searching for date - " .. date_today)  -- Prints the date being searched to help debug
+    local success, err = pcall(function()
+        vim.cmd("/## " .. date_today)  -- Executes the search
+    end)
+    if not success then
+        print("Error during search: " .. err)  -- Prints error if the search fails
+    end
+end
+
+-- Create a command ':today' that calls the search_today function with debugging
+vim.api.nvim_create_user_command(
+    'Today',  -- Command name
+    search_today,  -- Function to execute
+    {}
+)
+EOF

@@ -43,7 +43,7 @@
   st = status
   ap = add --patch
   cp = checkout --patch
-  ma = checkout master
+  ma = "!f() { git branch -a | grep -q ' master$' && git checkout master && exit 0; git branch -a | grep -q ' main$' && git checkout main && exit 0; echo 'Neither master nor main branch exists.'; }; f"
   cb = checkout -b
   db = branch -D
   rbc = rebase --continue
