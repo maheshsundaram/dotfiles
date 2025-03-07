@@ -18,5 +18,11 @@ map('n', '<C-p>', ':bprev<CR>', { desc = 'Previous buffer' })
 -- Insert mode mappings
 map('i', '<C-c>', '<CR><Esc>O', { desc = 'Insert newline and position cursor' })
 
+-- Diagnostic keymaps
+map('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic in floating window' })
+map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
+map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
+map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
+
 -- Reserve other mappings for plugin-specific configuration
 -- These will be defined in the respective plugin configurations
