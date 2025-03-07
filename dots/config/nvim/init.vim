@@ -25,6 +25,7 @@ Plug 'neoclide/jsonc.vim' " syntax highlighting for jsonc
 " Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/vim-easy-align'
 " Plug 'vimwiki/vimwiki'
+Plug 'rose-pine/neovim'
 
 call plug#end()
 " }} Plug
@@ -39,12 +40,12 @@ set t_Co=256 " still need this?
 set termguicolors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=light
-colorscheme stellarized
+colorscheme rose-pine-moon
 " }} theme
 
 " coc {{
 set updatetime=300
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-eslint', 'coc-css', 'coc-tabnine', 'coc-prettier', 'coc-rls', 'coc-rust-analyzer', 'coc-go']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-eslint', 'coc-css', 'coc-tabnine', 'coc-prettier', 'coc-rust-analyzer', 'coc-pyright']
 
 nnoremap <silent> K :call CocAction('doHover')<CR>
 nmap <C-e> :CocList diagnostics<CR>
@@ -54,10 +55,15 @@ nmap <silent> <C-o> :CocList outline<CR>
 
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+
+" Change the background color for Coc hover popup
+highlight! link CocFloating NormalFloat
+highlight! NormalFloat guibg=#907aa9
 " }} coc.vim
 
 " Goyo {{
@@ -80,7 +86,7 @@ autocmd! User GoyoLeave nested call <SID>goyo_leave()
 " airline {{
 set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='stellarized_light'
+let g:airline_theme='angr'
 " }} airline 
 
 " clipboard {{
