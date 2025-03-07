@@ -1,92 +1,100 @@
-[ -s "$HOME/.secrets.sh" ] && \. "$HOME/.secrets.sh"
-[ -f ~/.bash_aliases ] && . ~/.bash_aliases
+#!/bin/bash
 
-export PATH=$PATH:"$HOME/src/github.com/neovim/neovim/build/bin"
+# ===== SYSTEM DETECTION =====
+is_mac() {
+  [[ "$(uname -s)" == "Darwin" ]]
+}
 
-if [ "$(uname)" = "Linux" ]; then
-  source /usr/share/bash-completion/bash_completion
-  export PATH=$PATH:"$HOME/.cargo/bin"
-  source /usr/share/bash-completion/completions/git
-
-elif [ "$(uname)" = "Darwin" ]; then
-  # brew install bash-completion
-  . /usr/local/etc/bash_completion
-
-  export CLICOLOR=true
-  export LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
-  export PATH=$PATH:"$HOME/Library/Python/3.7/bin"
-
-  complete -o default -o nospace -F _git g
-
-  # i'm conventional
-  export BASH_SILENCE_DEPRECATION_WARNING=1
-fi
-
-# don't put duplicate lines or lines starting with space in the history
+# ===== HISTORY SETTINGS =====
 HISTCONTROL=ignoreboth
-
 HISTSIZE=1000
 HISTFILESIZE=2000
-
-# append to the history file, don't overwrite it
 shopt -s histappend
 
-# check the window size after each command
+# ===== TERMINAL SETTINGS =====
+export TERM="xterm-256color"
 shopt -s checkwinsize
 
-# shopt -s globstar
+# ===== MAC-SPECIFIC SETTINGS =====
+if is_mac; then
+  # Terminal colors for macOS
+  CLICOLOR=true
+  LSCOLORS=ExGxBxDxCxEgEdxbxgxcxd
+  BASH_SILENCE_DEPRECATION_WARNING=1
+  
+  # Homebrew path (Apple Silicon)
+  export PATH="/opt/homebrew/bin:$PATH"
+  
+  # Homebrew bash completion
+  [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+else
+  # Linux-specific settings
+  # Bash completion for Linux
+  source /usr/share/bash-completion/bash_completion
+  source /usr/share/bash-completion/completions/git
+fi
 
-PROMPT_SYMBOL="λ"
-PS1='\n\D{%F %T} \[\e[34m\]\w
-$(__git_ps1 "%s") $PROMPT_SYMBOL \[\e[00m\]'
-
-export GIT_PS1_SHOWDIRTYSTATE=1
-export GIT_PS1_SHOWUNTRACKEDFILES=1
-
+# ===== EDITOR SETTINGS =====
 set -o vi
 export VISUAL=vim
 export EDITOR=vim
-
-# clone nvm-sh/nvm
-export NVM_DIR="$HOME/code/nvm-sh/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-source ~/.git-prompt.sh
-source ~/.git-completion.sh
-source ~/.z.sh
-source ~/.find-package-json.sh
-source ~/.find-project-root.sh
-source ~/.clone.sh
-source ~/.zz.sh
-source ~/.pass.sh
-source ~/.git_fzf.sh
-source ~/.tofu.sh
-source ~/.set_xmodmap.sh && x
-
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
 
-# clone junegunn/fzf
+# ===== PROMPT SETTINGS =====
+PROMPT_SYMBOL="λ"
+PS1='\n\h \D{%F %T} \[\e[34m\]\w
+$(__git_ps1 "%s") $PROMPT_SYMBOL \[\e[00m\]'
+
+# ===== GIT SETTINGS =====
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+complete -o default -o nospace -F _git g
+
+# ===== PATH SETTINGS =====
+# User local binaries
+export PATH="$HOME/.local/bin:$PATH"
+
+# Deno
+export PATH="$HOME/.deno/bin:$PATH"
+export PATH="$HOME/.deno/env:$PATH"
+
+# Rust/Cargo
+export PATH="$PATH:$HOME/.cargo/bin"
+
+# Neovim
+export PATH="$PATH:$HOME/Downloads/nvim-macos-arm64/bin"
+
+# pnpm
+export PNPM_HOME="$HOME/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# ===== SOURCE FILES =====
+# Load secrets
+[ -s "$HOME/.secrets.sh" ] && \. "$HOME/.secrets.sh"
+
+# Load aliases
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
+
+# Load git utilities
+source ~/.git-prompt.sh
+source ~/.git-completion.sh
+
+# Load other utilities
+source ~/.z.sh
+source ~/.find-package-json.sh
+source ~/.git_fzf.sh
+
+# Load fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# deno
-export DENO_INSTALL="$HOME/.deno"
-export PATH=$PATH:"$DENO_INSTALL/bin"
-
-# rust
-source "$HOME/.cargo/env"
-
-export PATH=$PATH:"$HOME/.local/bin"
-
-export TODO_DIR="$HOME/notes"
-export TODO_FILE="$TODO_DIR/00-todo.txt"
-export DONE_FILE="$TODO_DIR/04-done.txt"
-
-# golang
-export PATH=$PATH:"/usr/local/go/bin"
-export PATH=$PATH:"$HOME/go/bin"
-# export GO111MODULE=on
-
-export TERM="xterm-256color"
+# Load fnm (Fast Node Manager)
+eval "$(fnm env --use-on-cd)"

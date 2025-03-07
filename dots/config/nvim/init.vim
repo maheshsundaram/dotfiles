@@ -18,14 +18,7 @@ Plug 'tpope/vim-vinegar' " directory navigation
 Plug 'elzr/vim-json' " make json pretty
 Plug '~/code/junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-" Plug 'andymass/vim-matchup' " extend match %
-Plug 'junegunn/Goyo.vim' " focused writing
-Plug 'neoclide/jsonc.vim' " syntax highlighting for jsonc
-" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'junegunn/vim-easy-align'
-" Plug 'vimwiki/vimwiki'
-Plug 'rose-pine/neovim'
 
 call plug#end()
 " }} Plug
@@ -65,23 +58,6 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 highlight! link CocFloating NormalFloat
 highlight! NormalFloat guibg=#907aa9
 " }} coc.vim
-
-" Goyo {{
-function! s:goyo_enter()
-  set linebreak
-endfunction
-
-function! s:goyo_leave()
-  set nolinebreak
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-" }} Goyo
-
-" matchup {{
-" let g:loaded_matchit = 1
-" }} matchup
 
 " airline {{
 set laststatus=2
@@ -133,24 +109,4 @@ nnoremap <C-n> :bnext<CR>
 nnoremap <C-p> :bprev<CR>
 
 xmap ga <Plug>(EasyAlign)
-
-autocmd filetype netrw nnoremap <buffer> % m
-nmap m %
-
-let hlstate=0
-nnoremap <silent> <C-u> :if (hlstate%2 == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=hlstate+1<CR>
-
-nnoremap <C-D> "=strftime("%Y-%m-%d %A")<CR>P
-inoremap <C-D> <C-R>=strftime("%Y-%m-%d %A")<CR>
-
-nnoremap <C-E> "=strftime("%Y-%m-%d")<CR>P
-inoremap <C-E> <C-R>=strftime("%Y-%m-%d")<CR>
 " }} mappings
-
-" markdown {{
-let g:vim_markdown_strikethrough = 1
-" let g:markdown_fenced_languages = ['html', 'ts', 'bash=sh', 'tsx', 'jsx', 'rust']
-let g:markdown_folding = 1
-au FileType markdown setlocal foldlevel=99
-autocmd filetype markdown set linebreak
-" }} markdown
