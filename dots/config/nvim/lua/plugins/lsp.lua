@@ -3,8 +3,35 @@
 local lspconfig = require('lspconfig')
 local map = vim.keymap.set
 
+-- Diagnostic configuration
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = true,
+  float = {
+    border = 'rounded',
+    source = 'always',
+  },
+})
+
 -- LSP keybindings
 local on_attach = function(client, bufnr)
+  -- Print message when LSP attaches to buffer
+  print("LSP attached: " .. client.name)
+
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  -- Buffer local mappings
+  local opts = { noremap = true, silent = true, buffer = bufnr }
+  
+  -- Definition, references, etc.
+  map('n', 'gd', vim.lsp.buf.definition, opts)
+  map('n', 'K', vim.lsp.buf.hover, opts)
+  map('n', '<leader>rn', vim.lsp.buf.rename, opts)
+
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -31,9 +58,22 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Setup LSP servers (equivalent to coc extensions)
-lspconfig.tsserver.setup {
+-- Use ts_ls instead of tsserver (as tsserver is deprecated in lspconfig)
+lspconfig.ts_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  root_dir = function(fname)
+    return lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git")(fname) or
+      vim.fn.getcwd()
+  end,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx", "javascript", "javascriptreact", "javascript.jsx" },
+  init_options = {
+    hostInfo = "neovim",
+    preferences = {
+      includeCompletionsForModuleExports = true,
+      includeCompletionsForImportStatements = true,
+    },
+  },
 }
 
 lspconfig.eslint.setup {

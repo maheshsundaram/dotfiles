@@ -1,0 +1,1 @@
+- [ ] Pop up window (e.g. for Rg, Ctrl-B, Ctrl-F) colors look really bad

@@ -26,6 +26,17 @@ require("lazy").setup({
       require("plugins.lsp")
     end,
   },
+  
+  -- Mason for managing LSP servers, formatters, and linters
+  {
+    "williamboman/mason.nvim",
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+    },
+    config = function()
+      require("plugins.mason-setup")
+    end,
+  },
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
