@@ -111,11 +111,24 @@ require("lazy").setup({
   
   -- Color schemes
   {
-    "rose-pine/neovim",
-    name = "rose-pine",
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
     config = function()
-      require("rose-pine").setup({
-        variant = "moon",
+      require("catppuccin").setup({
+        flavour = "macchiato", -- latte, frappe, macchiato, mocha
+        transparent_background = false,
+        term_colors = true,
+        integrations = {
+          cmp = true,
+          gitsigns = true,
+          nvimtree = true,
+          telescope = true,
+          treesitter = true,
+          mason = true,
+          lsp_trouble = true,
+          which_key = true,
+        },
       })
     end,
   },

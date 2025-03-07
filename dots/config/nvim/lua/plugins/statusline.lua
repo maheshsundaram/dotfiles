@@ -3,7 +3,7 @@
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'auto', -- 'angr' was your airline theme, try auto for now
+    theme = 'catppuccin', -- Use catppuccin theme for lualine
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
