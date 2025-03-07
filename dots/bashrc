@@ -90,6 +90,7 @@ source ~/.git-completion.sh
 
 # Load other utilities
 source ~/.z.sh
+source ~/.zz.sh
 source ~/.find-package-json.sh
 source ~/.git_fzf.sh
 
