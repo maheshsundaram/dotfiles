@@ -13,7 +13,16 @@ fi
 source "$HOME/code/junegunn/fzf/shell/key-bindings.bash"
 
 # Options
-export FZF_DEFAULT_OPTS='--height 90% --border --color=light'
+# export FZF_DEFAULT_OPTS='--height 90% --border --color=light'
+# Better FZF colors for Catppuccin - add to your shell config
+export FZF_DEFAULT_OPTS=" \
+  --height 90%
+  --border
+  --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+  --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+  --color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
+  --color=selected-bg:#494d64 \
+  --color=border:#363a4f,label:#cad3f5"
 
 export FZF_DEFAULT_COMMAND='fd --type f'
 # export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
