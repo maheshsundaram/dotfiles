@@ -29,7 +29,7 @@ map('n', '<leader>r', '<cmd>lua require("fzf-lua").lsp_references()<CR>', opts)
 map('n', '<leader>d', vim.lsp.buf.definition, opts)
 map('n', '<leader>k', vim.lsp.buf.hover, opts)
 map('n', '<leader>n', vim.lsp.buf.rename, opts)
-
+map('n', '<leader>o', '<cmd>lua require("fzf-lua").lsp_document_symbols()<CR>', opts)
 
 -- Reserve other mappings for plugin-specific configuration
 -- These will be defined in the respective plugin configurations
