@@ -96,6 +96,33 @@ lspconfig.pyright.setup {
   capabilities = capabilities,
 }
 
+-- Deno LSP setup
+lspconfig.denols.setup {
+  on_attach = function(client, bufnr)
+    -- Call the common on_attach function
+    on_attach(client, bufnr)
+    
+    -- Enable formatting on save for Deno files
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format({ async = false })
+      end,
+    })
+  end,
+  capabilities = capabilities,
+  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", ".git"),
+  init_options = {
+    enable = true,
+    lint = true,
+    unstable = false,
+    importMap = "deno.json"
+  },
+  -- Ensure Deno takes precedence over tsserver for Deno projects
+  single_file_support = false,
+  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "json" },
+}
+
 -- Format on save
 vim.api.nvim_create_user_command("Format", function()
   vim.lsp.buf.format({ async = true })

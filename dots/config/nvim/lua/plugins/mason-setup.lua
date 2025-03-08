@@ -20,6 +20,7 @@ require("mason-lspconfig").setup({
     "cssls",      -- CSS
     "rust_analyzer", -- Rust
     "pyright",    -- Python
+    "denols",     -- Deno Language Server
   },
   -- Auto-install configured servers (with lspconfig)
   automatic_installation = true,

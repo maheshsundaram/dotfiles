@@ -94,6 +94,7 @@ The configuration sets up the following LSP servers (replacing coc extensions):
 - cssls
 - rust_analyzer
 - pyright
+- denols (Deno)
 
 ## Additional Plugins and Features
 

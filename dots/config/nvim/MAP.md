@@ -117,6 +117,7 @@ The following LSP servers are configured in `plugins/lsp.lua` and can be install
 | `cssls`           | CSS                          | `:MasonInstall css-lsp` |
 | `rust_analyzer`   | Rust                         | `:MasonInstall rust-analyzer` |
 | `pyright`         | Python                       | `:MasonInstall pyright` |
+| `denols`          | Deno                         | `:MasonInstall deno-ls` |
 
 ## Theme Customization
 
