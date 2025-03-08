@@ -39,19 +39,19 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
   
   -- Definition, references, etc.
-  map('n', 'gd', vim.lsp.buf.definition, opts)
-  map('n', 'K', vim.lsp.buf.hover, opts)
-  map('n', '<leader>rn', vim.lsp.buf.rename, opts)
-  
-  -- Diagnostics
-  map('n', '<C-e>', function() 
-    require('fzf-lua').diagnostics_document()
-  end, opts)
-  
-  -- Document outline
-  map('n', '<C-o>', function() 
-    require('fzf-lua').lsp_document_symbols()
-  end, opts)
+  -- map('n', 'gd', vim.lsp.buf.definition, opts)
+  -- map('n', 'K', vim.lsp.buf.hover, opts)
+  -- map('n', '<leader>rn', vim.lsp.buf.rename, opts)
+  -- 
+  -- -- Diagnostics
+  -- map('n', '<C-e>', function() 
+  --   require('fzf-lua').diagnostics_document()
+  -- end, opts)
+  -- 
+  -- -- Document outline
+  -- map('n', '<C-o>', function() 
+  --   require('fzf-lua').lsp_document_symbols()
+  -- end, opts)
 end
 
 -- LSP capabilities
