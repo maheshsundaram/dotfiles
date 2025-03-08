@@ -24,5 +24,12 @@ map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list
 map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
 map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
 
+-- LSP
+map('n', '<leader>r', '<cmd>lua require("fzf-lua").lsp_references()<CR>', opts)
+map('n', '<leader>d', vim.lsp.buf.definition, opts)
+map('n', '<leader>k', vim.lsp.buf.hover, opts)
+map('n', '<leader>n', vim.lsp.buf.rename, opts)
+
+
 -- Reserve other mappings for plugin-specific configuration
 -- These will be defined in the respective plugin configurations

@@ -28,9 +28,9 @@ local on_attach = function(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
   
   -- Definition, references, etc.
-  map('n', 'gd', vim.lsp.buf.definition, opts)
-  map('n', 'K', vim.lsp.buf.hover, opts)
-  map('n', '<leader>rn', vim.lsp.buf.rename, opts)
+  -- map('n', 'gd', vim.lsp.buf.definition, opts)
+  -- map('n', 'K', vim.lsp.buf.hover, opts)
+  -- map('n', '<leader>rn', vim.lsp.buf.rename, opts)
 
   -- Enable completion triggered by <c-x><c-o>
   vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
