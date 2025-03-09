@@ -7,6 +7,41 @@ local function command_exists(cmd)
   return vim.fn.executable(cmd) == 1
 end
 
+-- Debounce mechanism to prevent too many concurrent linting processes
+local debounce_timers = {}
+local function debounced_lint(bufnr, linters, delay)
+  bufnr = bufnr or vim.api.nvim_get_current_buf()
+  delay = delay or 300 -- Default delay in ms
+  
+  -- Cancel any existing timer for this buffer
+  if debounce_timers[bufnr] then
+    vim.loop.timer_stop(debounce_timers[bufnr])
+    debounce_timers[bufnr] = nil
+  end
+  
+  -- Create a new timer
+  local timer = vim.loop.new_timer()
+  debounce_timers[bufnr] = timer
+  
+  -- Schedule the linting after the delay
+  timer:start(delay, 0, vim.schedule_wrap(function()
+    -- Clear the timer reference
+    debounce_timers[bufnr] = nil
+    
+    -- Only lint if the buffer still exists
+    if vim.api.nvim_buf_is_valid(bufnr) then
+      -- Use pcall to catch any errors
+      pcall(function() 
+        if linters then
+          lint.try_lint(linters, { bufnr = bufnr })
+        else
+          lint.try_lint(nil, { bufnr = bufnr })
+        end
+      end)
+    end
+  end))
+end
+
 -- Helper function to check if a project has eslint config
 local function has_eslint_config(ctx)
   local eslint_configs = {
@@ -77,28 +112,49 @@ lint.linters.eslint = {
     end
     return nil  -- Return nil if eslint is not available
   end,
+  -- Add args to limit memory usage and file handles
+  args = function()
+    return {
+      "--format", "json",
+      "--max-warnings", "100",
+      "--no-eslintrc", -- Use only configuration files
+      "--no-ignore", -- Don't use ignore files
+      "--cache", -- Use cache to improve performance
+      "-" -- Read from stdin
+    }
+  end,
+  -- Limit stdin size
+  stdin = true,
+  stdin_filename = function(_, bufname)
+    return bufname
+  end,
+  -- Increase timeout to prevent issues
+  timeout = 5000, -- 5 seconds
 }
 
 -- Set up autocommands for running linters
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
+
+-- Only run on BufWritePost to reduce frequency
+vim.api.nvim_create_autocmd("BufWritePost", {
   group = lint_augroup,
   callback = function()
-    -- Only run linters that are available for this filetype
-    local ft = vim.bo.filetype
+    local bufnr = vim.api.nvim_get_current_buf()
+    local ft = vim.bo[bufnr].filetype
     if ft == "" then return end -- Skip if filetype is empty
     
     local available_linters = get_linters_for_ft(ft)
     if #available_linters > 0 then
-      -- Use pcall to catch any errors
-      pcall(function() lint.try_lint(available_linters) end)
+      -- Use the debounced linting with a longer delay
+      debounced_lint(bufnr, available_linters, 500)
     end
   end,
 })
 
 -- Command to manually trigger linting
 vim.api.nvim_create_user_command("Lint", function()
-  local ft = vim.bo.filetype
+  local bufnr = vim.api.nvim_get_current_buf()
+  local ft = vim.bo[bufnr].filetype
   if ft == "" then
     vim.notify("No filetype detected", vim.log.levels.WARN)
     return
@@ -106,21 +162,39 @@ vim.api.nvim_create_user_command("Lint", function()
   
   local available_linters = get_linters_for_ft(ft)
   if #available_linters > 0 then
-    local ok, err = pcall(function() lint.try_lint(available_linters) end)
-    if not ok then
-      vim.notify("Error running linters: " .. tostring(err), vim.log.levels.ERROR)
-    end
+    vim.notify("Linting " .. ft .. " with " .. table.concat(available_linters, ", "), vim.log.levels.INFO)
+    debounced_lint(bufnr, available_linters, 0) -- Run immediately for manual command
   else
     vim.notify("No linters available for " .. ft, vim.log.levels.WARN)
   end
 end, {})
 
--- Override the lint.try_lint function to add error handling
+-- Override the lint.try_lint function to add error handling and resource limits
 local original_try_lint = lint.try_lint
-lint.try_lint = function(linters)
+lint.try_lint = function(linters, opts)
+  opts = opts or {}
+  
+  -- Set a maximum number of concurrent linting processes
+  local max_concurrent = 2
+  local current_count = 0
+  
+  -- Check if we're already at the limit
+  for _, timer in pairs(debounce_timers) do
+    if timer then
+      current_count = current_count + 1
+    end
+  end
+  
+  if current_count >= max_concurrent then
+    vim.schedule(function()
+      vim.api.nvim_echo({{"Skipping lint: too many concurrent processes", "Comment"}}, false, {})
+    end)
+    return
+  end
+  
   -- Wrap the original function in pcall to catch errors
   local ok, err = pcall(function()
-    original_try_lint(linters)
+    original_try_lint(linters, opts)
   end)
   
   if not ok then
@@ -130,3 +204,15 @@ lint.try_lint = function(linters)
     end)
   end
 end
+
+-- Clean up any lingering timers when Neovim exits
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  callback = function()
+    for _, timer in pairs(debounce_timers) do
+      if timer then
+        vim.loop.timer_stop(timer)
+      end
+    end
+    debounce_timers = {}
+  end,
+})
