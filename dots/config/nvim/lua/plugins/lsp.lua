@@ -63,6 +63,10 @@ lspconfig.ts_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   root_dir = function(fname)
+    -- Only activate ts_ls if we're NOT in a Deno project
+    if lspconfig.util.root_pattern("deno.json", "deno.jsonc")(fname) then
+      return nil
+    end
     return lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git")(fname) or
       vim.fn.getcwd()
   end,
@@ -111,7 +115,7 @@ lspconfig.denols.setup {
     })
   end,
   capabilities = capabilities,
-  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc", ".git"),
+  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
   init_options = {
     enable = true,
     lint = true,

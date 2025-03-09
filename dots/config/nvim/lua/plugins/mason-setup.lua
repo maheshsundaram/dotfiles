@@ -28,12 +28,8 @@ require("mason-lspconfig").setup({
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-require("lspconfig").ts_ls.setup({
-  capabilities = capabilities,
-  on_attach = function(client, bufnr)
-    -- Attach your custom configurations here
-  end,
-})
+-- The actual LSP setup is handled in the lsp.lua file
+-- This is just to ensure the servers are installed
 
 -- Print instructions for diagnosing LSP issues
 -- print("To check LSP status, run:")
