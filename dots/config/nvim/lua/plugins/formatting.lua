@@ -62,6 +62,8 @@ conform.setup({
   -- Define formatter configurations
   formatters = {
     deno_fmt = {
+      command = "deno",
+      args = { "fmt", "-" },
       condition = function(self, ctx)
         return vim.fs.find({ "deno.json", "deno.jsonc" }, { path = ctx.filename, upward = true })[1] ~= nil
       end,

@@ -12,10 +12,21 @@ lint.linters_by_ft = {
 }
 
 -- Configure linters
-lint.linters.eslint.condition = function(ctx)
-  -- Only use eslint in non-Deno projects
-  return vim.fs.find({ "deno.json", "deno.jsonc" }, { path = ctx.filename, upward = true })[1] == nil
-end
+-- Configure ESLint
+lint.linters.eslint = {
+  condition = function(ctx)
+    -- Only use eslint in non-Deno projects
+    return vim.fs.find({ "deno.json", "deno.jsonc" }, { path = ctx.filename, upward = true })[1] == nil
+  end,
+  -- Use local eslint if available
+  cmd = function()
+    local local_eslint = vim.fn.getcwd() .. "/node_modules/.bin/eslint"
+    if vim.fn.executable(local_eslint) == 1 then
+      return local_eslint
+    end
+    return "eslint"
+  end,
+}
 
 -- Set up autocommands for running linters
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
