@@ -1,82 +1,92 @@
--- lua/plugins/formatting.lua - Formatting Configuration
+-- lua/plugins/formatting.lua - Formatting Configuration with conform.nvim
 
-local null_ls = require("null-ls")
+local conform = require("conform")
 
-null_ls.setup({
-  sources = {
-    -- Formatting
-    null_ls.builtins.formatting.deno_fmt.with({
-      condition = function(utils)
-        -- Only use deno_fmt in Deno projects
-        return utils.root_has_file({ "deno.json", "deno.jsonc" })
-      end,
-      filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "json" },
-    }),
-    null_ls.builtins.formatting.prettier.with({
-      -- Don't use prettier in Deno projects
-      condition = function(utils)
-        return not utils.root_has_file({ "deno.json", "deno.jsonc" })
-      end,
-      filetypes = {
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "vue",
-        "css",
-        "scss",
-        "less",
-        "html",
-        "json",
-        "jsonc",
-        "yaml",
-        "markdown",
-        "graphql",
-      },
-    }),
-    null_ls.builtins.formatting.black.with({ -- Python formatter
-      extra_args = { "--fast" },
-    }),
-    null_ls.builtins.formatting.rustfmt, -- Rust formatter
+conform.setup({
+  formatters_by_ft = {
+    -- JavaScript/TypeScript
+    javascript = function(bufnr)
+      if conform.get_formatter_info("deno_fmt", bufnr).available then
+        return { "deno_fmt" }
+      else
+        return { "prettier" }
+      end
+    end,
+    javascriptreact = function(bufnr)
+      if conform.get_formatter_info("deno_fmt", bufnr).available then
+        return { "deno_fmt" }
+      else
+        return { "prettier" }
+      end
+    end,
+    typescript = function(bufnr)
+      if conform.get_formatter_info("deno_fmt", bufnr).available then
+        return { "deno_fmt" }
+      else
+        return { "prettier" }
+      end
+    end,
+    typescriptreact = function(bufnr)
+      if conform.get_formatter_info("deno_fmt", bufnr).available then
+        return { "deno_fmt" }
+      else
+        return { "prettier" }
+      end
+    end,
     
-    -- Diagnostics
-    null_ls.builtins.diagnostics.eslint.with({
-      filetypes = {
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "vue",
-      },
-    }),
-    null_ls.builtins.diagnostics.flake8, -- Python linter
+    -- Web formats
+    css = { "prettier" },
+    scss = { "prettier" },
+    less = { "prettier" },
+    html = { "prettier" },
+    json = function(bufnr)
+      if conform.get_formatter_info("deno_fmt", bufnr).available then
+        return { "deno_fmt" }
+      else
+        return { "prettier" }
+      end
+    end,
+    jsonc = { "prettier" },
+    yaml = { "prettier" },
+    markdown = { "prettier" },
+    graphql = { "prettier" },
+    vue = { "prettier" },
     
-    -- Code actions
-    null_ls.builtins.code_actions.eslint,
-    null_ls.builtins.code_actions.gitsigns,
+    -- Python
+    python = { "ruff_format" },
+    
+    -- Rust
+    rust = { "rustfmt" },
   },
   
-  -- Format on save (uncomment if you want this behavior)
-  -- on_attach = function(client, bufnr)
-  --   if client.supports_method("textDocument/formatting") then
-  --     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-  --     vim.api.nvim_create_autocmd("BufWritePre", {
-  --       group = augroup,
-  --       buffer = bufnr,
-  --       callback = function()
-  --         vim.lsp.buf.format({ bufnr = bufnr })
-  --       end,
-  --     })
-  --   end
-  -- end,
+  -- Define formatter configurations
+  formatters = {
+    deno_fmt = {
+      condition = function(self, ctx)
+        return vim.fs.find({ "deno.json", "deno.jsonc" }, { path = ctx.filename, upward = true })[1] ~= nil
+      end,
+    },
+    prettier = {
+      condition = function(self, ctx)
+        return vim.fs.find({ "deno.json", "deno.jsonc" }, { path = ctx.filename, upward = true })[1] == nil
+      end,
+    },
+    ruff_format = {
+      -- Ruff configuration if needed
+    },
+  },
+  
+  -- Format on save
+  format_on_save = {
+    timeout_ms = 500,
+    lsp_fallback = true,
+  },
 })
 
 -- Command to format current buffer with prettier (similar to your coc-prettier command)
 vim.api.nvim_create_user_command("Prettier", function()
-  vim.lsp.buf.format({ 
+  conform.format({
+    formatters = { "prettier" },
     async = true,
-    filter = function(client)
-      return client.name == "null-ls"
-    end
   })
 end, {})

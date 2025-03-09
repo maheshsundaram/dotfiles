@@ -133,12 +133,22 @@ require("lazy").setup({
     end,
   },
   
-  -- Formatting and linting (replacing parts of coc)
+  -- Formatting (replacing null-ls)
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
     config = function()
       require("plugins.formatting")
+    end,
+  },
+  
+  -- Linting (replacing null-ls)
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("plugins.linting")
     end,
   },
 })
