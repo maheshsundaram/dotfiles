@@ -25,6 +25,11 @@ end
 
 -- Helper function to safely get linters for a filetype
 local function get_linters_for_ft(ft)
+  -- Return empty if filetype is empty or nil
+  if not ft or ft == "" then
+    return {}
+  end
+  
   local linters = lint.linters_by_ft[ft] or {}
   local available_linters = {}
   
@@ -76,23 +81,52 @@ lint.linters.eslint = {
 
 -- Set up autocommands for running linters
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
   group = lint_augroup,
   callback = function()
     -- Only run linters that are available for this filetype
-    local available_linters = get_linters_for_ft(vim.bo.filetype)
+    local ft = vim.bo.filetype
+    if ft == "" then return end -- Skip if filetype is empty
+    
+    local available_linters = get_linters_for_ft(ft)
     if #available_linters > 0 then
-      lint.try_lint(available_linters)
+      -- Use pcall to catch any errors
+      pcall(function() lint.try_lint(available_linters) end)
     end
   end,
 })
 
 -- Command to manually trigger linting
 vim.api.nvim_create_user_command("Lint", function()
-  local available_linters = get_linters_for_ft(vim.bo.filetype)
+  local ft = vim.bo.filetype
+  if ft == "" then
+    vim.notify("No filetype detected", vim.log.levels.WARN)
+    return
+  end
+  
+  local available_linters = get_linters_for_ft(ft)
   if #available_linters > 0 then
-    lint.try_lint(available_linters)
+    local ok, err = pcall(function() lint.try_lint(available_linters) end)
+    if not ok then
+      vim.notify("Error running linters: " .. tostring(err), vim.log.levels.ERROR)
+    end
   else
-    vim.notify("No linters available for " .. vim.bo.filetype, vim.log.levels.WARN)
+    vim.notify("No linters available for " .. ft, vim.log.levels.WARN)
   end
 end, {})
+
+-- Override the lint.try_lint function to add error handling
+local original_try_lint = lint.try_lint
+lint.try_lint = function(linters)
+  -- Wrap the original function in pcall to catch errors
+  local ok, err = pcall(function()
+    original_try_lint(linters)
+  end)
+  
+  if not ok then
+    -- Log the error but don't display it to the user to avoid interrupting workflow
+    vim.schedule(function()
+      vim.api.nvim_echo({{"Linting error (suppressed): " .. tostring(err), "Comment"}}, false, {})
+    end)
+  end
+end
