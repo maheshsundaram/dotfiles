@@ -2,8 +2,8 @@
   email = mahesh@omkara.dev
   name = Mahesh Sundaram
 
-[includeIf "gitdir:~/work/"]
-  path = ~/work/.gitconfig
+[includeIf "gitdir:~/helpcare/"]
+  path = ~/helpcare/.gitconfig
 
 [credential]
   helper = cache --timeout=3600
