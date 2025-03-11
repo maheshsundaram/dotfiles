@@ -3,6 +3,13 @@
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 
+-- Helper function for tab completion
+local has_words_before = function()
+  if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then return false end
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_text(0, line-1, 0, line-1, col, {})[1]:match("^%s*$") == nil
+end
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -16,10 +23,12 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item
     
-    -- Tab and S-Tab to navigate through completion menu (similar to your coc config)
+    -- Tab and S-Tab to navigate through completion menu with improved behavior for Copilot
     ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
+      if cmp.visible() and has_words_before() then
+        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
       else
         fallback()
       end
@@ -27,14 +36,17 @@ cmp.setup({
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
       else
         fallback()
       end
     end, { 'i', 's' }),
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    { name = 'copilot', group_index = 2 },
+    { name = 'nvim_lsp', group_index = 2 },
+    { name = 'luasnip', group_index = 2 },
   }, {
     { name = 'buffer' },
     { name = 'path' },
@@ -68,6 +80,7 @@ cmp.setup({
         Event = "",
         Operator = "",
         TypeParameter = "",
+        Copilot = "",
       }
       vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
       
@@ -77,6 +90,7 @@ cmp.setup({
         luasnip = "[Snip]",
         buffer = "[Buf]",
         path = "[Path]",
+        copilot = "[Copilot]",
       })[entry.source.name]
       
       return vim_item
@@ -89,6 +103,24 @@ cmp.setup({
     completion = {
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
       winhighlight = "Normal:CmpNormal",
+    },
+  },
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      -- Prioritize Copilot suggestions
+      require("copilot_cmp.comparators").prioritize,
+      
+      -- Default comparators
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+      cmp.config.compare.recently_used,
+      cmp.config.compare.locality,
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
     },
   },
   experimental = {
@@ -113,3 +145,6 @@ cmp.setup.cmdline(':', {
     { name = 'cmdline' }
   })
 })
+
+-- Set highlight for Copilot items
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
