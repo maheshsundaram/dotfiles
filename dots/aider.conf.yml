@@ -24,10 +24,10 @@ model: anthropic/claude-3-7-sonnet-20250219
 # API Keys and settings:
 
 ## Specify the OpenAI API key
-openai-api-key: $OPENAI_API_KEY
+# openai-api-key: $OPENAI_API_KEY
 
 ## Specify the Anthropic API key
-anthropic-api-key: $ANTHROPIC_API_KEY
+# anthropic-api-key: $ANTHROPIC_API_KEY
 
 ## Specify the api base url
 #openai-api-base: xxx
@@ -368,7 +368,7 @@ dark-mode: true
 #  - zzz
 
 ## Use VI editing mode in the terminal (default: False)
-#vim: false
+vim: true
 
 ## Specify the language to use in the chat (default: None, uses system settings)
 #chat-language: xxx
