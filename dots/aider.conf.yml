@@ -24,10 +24,10 @@ model: anthropic/claude-3-7-sonnet-20250219
 # API Keys and settings:
 
 ## Specify the OpenAI API key
-openai-api-key: $OPENAI_API_KEY
+# openai-api-key: $OPENAI_API_KEY
 
 ## Specify the Anthropic API key
-anthropic-api-key: $ANTHROPIC_API_KEY
+# anthropic-api-key: $ANTHROPIC_API_KEY
 
 ## Specify the api base url
 #openai-api-base: xxx
@@ -167,31 +167,31 @@ dark-mode: true
 #stream: true
 
 ## Set the color for user input (default: #00cc00)
-user-input-color: "#8bd5ca"  # Catppuccin Macchiato Teal
+user-input-color: "#8bd5ca" # Catppuccin Macchiato Teal
 
 ## Set the color for tool output (default: None)
-tool-output-color: "#c6a0f6"  # Catppuccin Macchiato Mauve
+tool-output-color: "#c6a0f6" # Catppuccin Macchiato Mauve
 
 ## Set the color for tool error messages (default: #FF2222)
-tool-error-color: "#ed8796"  # Catppuccin Macchiato Red
+tool-error-color: "#ed8796" # Catppuccin Macchiato Red
 
 ## Set the color for tool warning messages (default: #FFA500)
-tool-warning-color: "#f5a97f"  # Catppuccin Macchiato Peach
+tool-warning-color: "#f5a97f" # Catppuccin Macchiato Peach
 
 ## Set the color for assistant output (default: #0088ff)
-assistant-output-color: "#8aadf4"  # Catppuccin Macchiato Blue
+assistant-output-color: "#8aadf4" # Catppuccin Macchiato Blue
 
 ## Set the color for the completion menu (default: terminal's default text color)
-completion-menu-color: "#cad3f5"  # Catppuccin Macchiato Text
+completion-menu-color: "#cad3f5" # Catppuccin Macchiato Text
 
 ## Set the background color for the completion menu (default: terminal's default background color)
-completion-menu-bg-color: "#24273a"  # Catppuccin Macchiato Base
+completion-menu-bg-color: "#24273a" # Catppuccin Macchiato Base
 
 ## Set the color for the current item in the completion menu (default: terminal's default background color)
-completion-menu-current-color: "#24273a"  # Catppuccin Macchiato Base
+completion-menu-current-color: "#24273a" # Catppuccin Macchiato Base
 
 ## Set the background color for the current item in the completion menu (default: terminal's default text color)
-completion-menu-current-bg-color: "#8aadf4"  # Catppuccin Macchiato Blue
+completion-menu-current-bg-color: "#8aadf4" # Catppuccin Macchiato Blue
 
 ## Set the markdown code theme (default: default, other options include monokai, solarized-dark, solarized-light, or a Pygments builtin style, see https://pygments.org/styles for available themes)
 code-theme: dracula
