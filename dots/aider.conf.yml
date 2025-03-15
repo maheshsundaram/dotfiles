@@ -232,9 +232,6 @@ attribute-committer: false
 ## Prefix all commit messages with 'aider: ' (default: False)
 #attribute-commit-message-committer: false
 
-## Enable/disable multiline commit messages (default: True)
-multiline-commits: false
-
 ## Commit all pending changes with a suitable commit message, then exit
 #commit: false
 
@@ -401,10 +398,10 @@ env-file: $HOME/.secrets.sh
 #fancy-input: true
 
 ## Enable/disable multi-line input mode with Meta-Enter to submit (default: False)
-multiline: true
+# multiline: true
 
 ## Enable/disable terminal bell notifications when LLM responses are ready (default: False)
-notifications: true
+# notifications: true
 ## Specify a command to run for notifications instead of the terminal bell. If not specified, a default command for your OS may be used.
 #notifications-command: xxx
 
