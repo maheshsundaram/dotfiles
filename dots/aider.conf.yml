@@ -24,10 +24,10 @@ model: anthropic/claude-3-7-sonnet-20250219
 # API Keys and settings:
 
 ## Specify the OpenAI API key
-# openai-api-key: $OPENAI_API_KEY
+openai-api-key: $OPENAI_API_KEY
 
 ## Specify the Anthropic API key
-# anthropic-api-key: $ANTHROPIC_API_KEY
+anthropic-api-key: $ANTHROPIC_API_KEY
 
 ## Specify the api base url
 #openai-api-base: xxx
@@ -194,10 +194,10 @@ dark-mode: true
 #completion-menu-current-bg-color: "xxx"
 
 ## Set the markdown code theme (default: default, other options include monokai, solarized-dark, solarized-light, or a Pygments builtin style, see https://pygments.org/styles for available themes)
-#code-theme: default
+code-theme: monokai
 
 ## Show diffs when committing changes (default: False)
-#show-diffs: false
+show-diffs: true
 
 ###############
 # Git settings:
@@ -400,10 +400,10 @@ env-file: $HOME/.secrets.sh
 #fancy-input: true
 
 ## Enable/disable multi-line input mode with Meta-Enter to submit (default: False)
-#multiline: false
+multiline: true
 
 ## Enable/disable terminal bell notifications when LLM responses are ready (default: False)
-#notifications: false
+notifications: true
 
 ## Specify a command to run for notifications instead of the terminal bell. If not specified, a default command for your OS may be used.
 #notifications-command: xxx
