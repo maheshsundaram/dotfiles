@@ -221,16 +221,19 @@ show-diffs: true
 #dirty-commits: true
 
 ## Attribute aider code changes in the git author name (default: True)
-#attribute-author: true
+attribute-author: false
 
 ## Attribute aider commits in the git committer name (default: True)
-#attribute-committer: true
+attribute-committer: false
 
 ## Prefix commit messages with 'aider: ' if aider authored the changes (default: False)
 #attribute-commit-message-author: false
 
 ## Prefix all commit messages with 'aider: ' (default: False)
 #attribute-commit-message-committer: false
+
+## Enable/disable multiline commit messages (default: True)
+multiline-commits: false
 
 ## Commit all pending changes with a suitable commit message, then exit
 #commit: false
