@@ -27,7 +27,7 @@ model: anthropic/claude-3-7-sonnet-20250219
 #openai-api-key: xxx
 
 ## Specify the Anthropic API key
-#anthropic-api-key: xxx
+anthropic-api-key: $ANTHROPIC_API_KEY
 
 ## Specify the api base url
 #openai-api-base: xxx
