@@ -245,7 +245,7 @@ show-diffs: true
 #skip-sanity-check-repo: false
 
 ## Enable/disable watching files for ai coding comments (default: False)
-#watch-files: false
+watch-files: true
 
 ########################
 # Fixing and committing:
@@ -404,7 +404,6 @@ multiline: true
 
 ## Enable/disable terminal bell notifications when LLM responses are ready (default: False)
 notifications: true
-
 ## Specify a command to run for notifications instead of the terminal bell. If not specified, a default command for your OS may be used.
 #notifications-command: xxx
 
