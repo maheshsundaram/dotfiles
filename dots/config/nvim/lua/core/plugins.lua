@@ -153,27 +153,28 @@ require("lazy").setup({
   },
 
   -- AI
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      })
-    end,
-  },
-  {
-    "zbirenbaum/copilot-cmp",
-    dependencies = { "zbirenbaum/copilot.lua" },
-    config = function()
-      require("copilot_cmp").setup({
-        event = { "InsertEnter", "LspAttach" },
-        fix_pairs = true,
-      })
-    end,
-  },
+  { 'codota/tabnine-nvim', build = "./dl_binaries.sh" },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("copilot").setup({
+  --       suggestion = { enabled = false },
+  --       panel = { enabled = false },
+  --     })
+  --   end,
+  -- },
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   dependencies = { "zbirenbaum/copilot.lua" },
+  --   config = function()
+  --     require("copilot_cmp").setup({
+  --       event = { "InsertEnter", "LspAttach" },
+  --       fix_pairs = true,
+  --     })
+  --   end,
+  -- },
   -- {
   --   "yetone/avante.nvim",
   --   event = "VeryLazy",
@@ -181,7 +182,7 @@ require("lazy").setup({
   --   opts = {
   --     -- add any opts here
   --     -- for example
-  --     -- provider = "openai",
+  --     -- provider = "claude",
   --     -- openai = {
   --     --   endpoint = "https://api.openai.com/v1",
   --     --   model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)

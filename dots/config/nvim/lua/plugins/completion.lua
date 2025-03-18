@@ -50,9 +50,8 @@ cmp.setup({
     { name = "path", group_index = 2 },
     { name = "luasnip", group_index = 2 },
   },
-}),
-formatting = {
-  format = function(entry, vim_item)
+  formatting = {
+    format = function(entry, vim_item)
       -- Kind icons
       local kind_icons = {
         Text = "",
