@@ -22,29 +22,31 @@ cmp.setup({
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item
+    -- ['<C-k>'] = cmp.select_next_item({ behavior = cmp.SelectBehavior.Select }),
+    -- ['<C-j>'] = cmp.select_prev_item(),
     
     -- Tab and S-Tab to navigate through completion menu with improved behavior for Copilot
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() and has_words_before() then
-        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
+    -- ['<Tab>'] = cmp.mapping(function(fallback)
+    --   if cmp.visible() and has_words_before() then
+    --     cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+    --   elseif luasnip.expand_or_jumpable() then
+    --     luasnip.expand_or_jump()
+    --   else
+    --     fallback()
+    --   end
+    -- end, { 'i', 's' }),
+    -- ['<S-Tab>'] = cmp.mapping(function(fallback)
+    --   if cmp.visible() then
+    --     cmp.select_prev_item()
+    --   elseif luasnip.jumpable(-1) then
+    --     luasnip.jump(-1)
+    --   else
+    --     fallback()
+    --   end
+    -- end, { 'i', 's' }),
   }),
   sources = {
-    { name = "copilot", group_index = 2 },
+    { name = "tabnine", group_index = 2 },
     { name = "nvim_lsp", group_index = 2 },
     { name = "buffer", group_index = 2 },
     { name = "path", group_index = 2 },
