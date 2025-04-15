@@ -28,3 +28,5 @@ alias n='npm run'
 alias pb='git push origin $(git rev-parse --abbrev-ref HEAD)'
 alias pbf='pb --force'
 alias vpkg='vim $(pkg)'
+
+alias v='source .venv/bin/activate'
