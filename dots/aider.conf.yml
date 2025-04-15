@@ -18,7 +18,7 @@
 # Main model:
 
 ## Specify the model to use for the main chat
-model: anthropic/claude-3-7-sonnet-20250219
+model: anthropic/claude-3-5-sonnet-latest
 
 ########################
 # API Keys and settings:
@@ -254,11 +254,12 @@ watch-files: true
 #lint: false
 
 ## Specify lint commands to run for different languages, eg: "python: flake8 --select=..." (can be used multiple times)
-lint-cmd:
-  - "python: ruff check --fix"
-  # - "typescript: eslint --fix && prettier --write"
-  # TODO: Fix for bun vs deno vs typescript vs react etc.
-  # - "deno: deno fmt"
+# lint-cmd:
+# TODO: Only lint what has been changed, not the full project
+# - "python: ruff check --fix && ruff format"
+# - "typescript: eslint --fix && prettier --write"
+# TODO: Fix for bun vs deno vs typescript vs react etc.
+# - "deno: deno fmt"
 
 ## Enable/disable automatic linting after changes (default: True)
 # auto-lint: true
