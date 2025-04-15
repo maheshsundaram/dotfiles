@@ -2,9 +2,6 @@
   email = mahesh@omkara.dev
   name = Mahesh Sundaram
 
-[includeIf "gitdir:~/helpcare/"]
-  path = ~/helpcare/.gitconfig
-
 [credential]
   helper = cache --timeout=3600
 
@@ -46,3 +43,7 @@
 [merge "npm-merge-driver"]
 	name = automatically merge npm lockfiles
 	driver = npx npm-merge-driver merge %A %O %B %P
+
+[includeIf "gitdir:/Users/aum/helpcare/"]
+  path = /Users/aum/helpcare/.gitconfig
+
