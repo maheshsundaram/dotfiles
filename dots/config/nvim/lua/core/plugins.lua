@@ -14,6 +14,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- let g:augment_workspace_folders = ['~/helpcare/code/helpcare']
+vim.g.augment_workspace_folders = {'~/helpcare/code/helpcare'}
+
 -- Plugin list
 require("lazy").setup({
   -- LSP, Completions, and Diagnostics (replacing CoC)
@@ -154,27 +157,30 @@ require("lazy").setup({
 
   -- AI
   {
-    "codota/tabnine-nvim",
-    build = "./dl_binaries.sh",
-    config = function()
-      require("tabnine").setup({
-        disable_auto_comment=true,
-        accept_keymap="<Tab>",
-        dismiss_keymap = "<C-]>",
-        debounce_ms = 800,
-        suggestion_color = {gui = "#808080", cterm = 244},
-        exclude_filetypes = {"TelescopePrompt", "NvimTree"},
-        log_file_path = nil, -- absolute path to Tabnine log file
-        ignore_certificate_errors = false,
-        -- workspace_folders = {
-        --   paths = { "/your/project" },
-        --   get_paths = function()
-        --       return { "/your/project" }
-        --   end,
-        -- },
-      })
-    end,
-  },
+    'augmentcode/augment.vim'
+  }
+  -- {
+  --   "codota/tabnine-nvim",
+  --   build = "./dl_binaries.sh",
+  --   config = function()
+  --     require("tabnine").setup({
+  --       disable_auto_comment=true,
+  --       accept_keymap="<Tab>",
+  --       dismiss_keymap = "<C-]>",
+  --       debounce_ms = 800,
+  --       suggestion_color = {gui = "#808080", cterm = 244},
+  --       exclude_filetypes = {"TelescopePrompt", "NvimTree"},
+  --       log_file_path = nil, -- absolute path to Tabnine log file
+  --       ignore_certificate_errors = false,
+  --       -- workspace_folders = {
+  --       --   paths = { "/your/project" },
+  --       --   get_paths = function()
+  --       --       return { "/your/project" }
+  --       --   end,
+  --       -- },
+  --     })
+  --   end,
+  -- },
   -- {
   --   "zbirenbaum/copilot.lua",
   --   cmd = "Copilot",
