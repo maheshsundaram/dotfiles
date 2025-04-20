@@ -14,9 +14,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- let g:augment_workspace_folders = ['~/helpcare/code/helpcare']
-vim.g.augment_workspace_folders = {'~/helpcare/code/helpcare'}
-
 -- Plugin list
 require("lazy").setup({
   -- LSP, Completions, and Diagnostics (replacing CoC)
@@ -156,9 +153,6 @@ require("lazy").setup({
   },
 
   -- AI
-  {
-    'augmentcode/augment.vim'
-  }
   -- {
   --   "codota/tabnine-nvim",
   --   build = "./dl_binaries.sh",

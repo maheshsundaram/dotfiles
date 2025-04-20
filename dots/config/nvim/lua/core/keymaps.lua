@@ -31,9 +31,5 @@ map('n', '<leader>k', vim.lsp.buf.hover, opts)
 map('n', '<leader>n', vim.lsp.buf.rename, opts)
 map('n', '<leader>o', '<cmd>lua require("fzf-lua").lsp_document_symbols()<CR>', opts)
 
--- Use Ctrl-Y to accept a suggestion
-map('i', '<leader>y', '<cmd>call augment#Accept()<cr>', opts)
--- inoremap <c-y> <cmd>call augment#Accept()<cr>
-
 -- Reserve other mappings for plugin-specific configuration
 -- These will be defined in the respective plugin configurations
