@@ -27,7 +27,19 @@ map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
 -- LSP
 map('n', '<leader>r', '<cmd>lua require("fzf-lua").lsp_references()<CR>', opts)
 map('n', '<leader>d', vim.lsp.buf.definition, opts)
+-- Map <leader>k to regular hover
 map('n', '<leader>k', vim.lsp.buf.hover, opts)
+
+-- Map Shift+H to a more explicit hover command with border for testing
+map('n', 'H', function()
+  vim.lsp.buf.hover({
+    border = { "╔", "═", "╗", "║", "╝", "═", "╚", "║" },
+    title = " Hover Info ",
+    title_pos = "center",
+    max_width = 80,
+    max_height = 30,
+  })
+end, { noremap = true, silent = true })
 map('n', '<leader>n', vim.lsp.buf.rename, opts)
 map('n', '<leader>o', '<cmd>lua require("fzf-lua").lsp_document_symbols()<CR>', opts)
 

@@ -42,6 +42,10 @@ if vim.fn.has("clipboard") == 1 then
   opt.clipboard = "unnamedplus"
 end
 
+-- Floating window appearance
+opt.pumblend = 0               -- No transparency for popup menu
+opt.winblend = 0               -- No transparency for floating windows
+
 -- Syntax and filetype
 vim.cmd('syntax enable')
 vim.cmd('filetype plugin indent on')

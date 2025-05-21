@@ -11,8 +11,10 @@ vim.diagnostic.config({
   underline = true,
   severity_sort = true,
   float = {
-    border = 'rounded',
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
     source = 'always',
+    title = " Diagnostics ",
+    title_pos = "center",
   },
 })
 
@@ -95,8 +97,28 @@ lspconfig.rust_analyzer.setup {
   capabilities = capabilities,
 }
 
+local border_chars = { "╔", "═", "╗", "║", "╝", "═", "╚", "║" }
+
 lspconfig.pyright.setup {
-  on_attach = on_attach,
+  on_attach = function(client, bufnr)
+    -- Regular on_attach
+    on_attach(client, bufnr)
+    
+    -- Special hover handler for Python files
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '', {
+      noremap = true,
+      silent = true,
+      callback = function()
+        vim.lsp.buf.hover({
+          border = border_chars,
+          title = " Python Hover ",
+          title_pos = "center",
+          focusable = false,
+          padding = 1,
+        })
+      end
+    })
+  end,
   capabilities = capabilities,
 }
 
@@ -140,21 +162,31 @@ vim.diagnostic.config({
   underline = true,
   severity_sort = true,
   float = {
-    border = 'rounded',
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
     source = 'always',
+    title = " Diagnostics ",
+    title_pos = "center",
   },
 })
 
 -- Configure hover and signature help to have borders
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
   vim.lsp.handlers.hover, {
-    border = "rounded",
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    title = " Hover ",
+    title_pos = "center",
+    max_width = 80,
+    max_height = 30,
   }
 )
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
   vim.lsp.handlers.signature_help, {
-    border = "rounded",
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    title = " Signature ",
+    title_pos = "center",
+    max_width = 80,
+    max_height = 20,
   }
 )
 
