@@ -1,1 +1,2 @@
 theme = catppuccin-macchiato.conf
+keybind = shift+enter=text:\n

@@ -97,57 +97,37 @@ lspconfig.rust_analyzer.setup {
   capabilities = capabilities,
 }
 
-local border_chars = { "╔", "═", "╗", "║", "╝", "═", "╚", "║" }
-
 lspconfig.pyright.setup {
-  on_attach = function(client, bufnr)
-    -- Regular on_attach
-    on_attach(client, bufnr)
-    
-    -- Special hover handler for Python files
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '', {
-      noremap = true,
-      silent = true,
-      callback = function()
-        vim.lsp.buf.hover({
-          border = border_chars,
-          title = " Python Hover ",
-          title_pos = "center",
-          focusable = false,
-          padding = 1,
-        })
-      end
-    })
-  end,
+  on_attach = on_attach,
   capabilities = capabilities,
 }
 
 -- Deno LSP setup
-lspconfig.denols.setup {
-  on_attach = function(client, bufnr)
-    -- Call the common on_attach function
-    on_attach(client, bufnr)
-    
-    -- Enable formatting on save for Deno files
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      callback = function()
-        vim.lsp.buf.format({ async = false })
-      end,
-    })
-  end,
-  capabilities = capabilities,
-  root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
-  init_options = {
-    enable = true,
-    lint = true,
-    unstable = false,
-    importMap = "deno.json"
-  },
-  -- Ensure Deno takes precedence over tsserver for Deno projects
-  single_file_support = false,
-  filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "json" },
-}
+-- lspconfig.denols.setup {
+--   on_attach = function(client, bufnr)
+--     -- Call the common on_attach function
+--     on_attach(client, bufnr)
+--     
+--     -- Enable formatting on save for Deno files
+--     vim.api.nvim_create_autocmd("BufWritePre", {
+--       buffer = bufnr,
+--       callback = function()
+--         vim.lsp.buf.format({ async = false })
+--       end,
+--     })
+--   end,
+--   capabilities = capabilities,
+--   root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+--   init_options = {
+--     enable = true,
+--     lint = true,
+--     unstable = false,
+--     importMap = "deno.json"
+--   },
+--   -- Ensure Deno takes precedence over tsserver for Deno projects
+--   single_file_support = false,
+--   filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "json" },
+-- }
 
 -- Format on save
 vim.api.nvim_create_user_command("Format", function()
